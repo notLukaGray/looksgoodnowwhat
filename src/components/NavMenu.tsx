@@ -143,7 +143,7 @@ export default function NavMenu({ navItems }: NavMenuProps) {
           <span
             style={{
               fontFamily: 'IBM Plex Mono, monospace',
-              fontSize: 8,
+              fontSize: 12,
               color: '#888',
               letterSpacing: 1,
               cursor: 'pointer',

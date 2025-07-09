@@ -8,17 +8,21 @@ function parseHomeMarkdown(md: string) {
   const publisher1Match = md.match(/Publisher: ([^\n]+)/);
   const imageMatch = md.match(/Image: ([^\n]+)/);
   const quote2Match = md.match(/Quote 02:\n>\s*"([\s\S]*?)"/);
-  const publisher2Match = md.match(/Publisher: ([^\n]+)/g);
   const footerMatch = md.match(/Footer: ([^\n]+)/);
 
   const quote1 = quote1Match ? quote1Match[1].trim() : '';
   const publisher1 = publisher1Match ? publisher1Match[1].trim() : '';
   const image = imageMatch ? imageMatch[1].trim() : '';
   const quote2 = quote2Match ? quote2Match[1].trim() : '';
-  let publisher2 = '';
-  if (publisher2Match && publisher2Match.length > 1) {
-    publisher2 = publisher2Match[1].replace('Publisher: ', '').trim();
-  }
+
+  // Find the second publisher by looking for "Publisher:" after Quote 02
+  const quote2Index = md.indexOf('Quote 02:');
+  const publisher2Match =
+    quote2Index !== -1
+      ? md.slice(quote2Index).match(/Publisher: ([^\n]+)/)
+      : null;
+  const publisher2 = publisher2Match ? publisher2Match[1].trim() : '';
+
   const footer = footerMatch ? footerMatch[1].trim() : '';
 
   return { quote1, publisher1, image, quote2, publisher2, footer };
