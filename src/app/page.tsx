@@ -1,37 +1,15 @@
-import fs from 'fs';
-import path from 'path';
 import React from 'react';
 import Image from 'next/image';
 
-function parseHomeMarkdown(md: string) {
-  const quote1Match = md.match(/Quote 01:\n>\s*"([\s\S]*?)"/);
-  const publisher1Match = md.match(/Publisher: ([^\n]+)/);
-  const imageMatch = md.match(/Image: ([^\n]+)/);
-  const quote2Match = md.match(/Quote 02:\n>\s*"([\s\S]*?)"/);
-  const footerMatch = md.match(/Footer: ([^\n]+)/);
-
-  const quote1 = quote1Match ? quote1Match[1].trim() : '';
-  const publisher1 = publisher1Match ? publisher1Match[1].trim() : '';
-  const image = imageMatch ? imageMatch[1].trim() : '';
-  const quote2 = quote2Match ? quote2Match[1].trim() : '';
-
-  // Find the second publisher by looking for "Publisher:" after Quote 02
-  const quote2Index = md.indexOf('Quote 02:');
-  const publisher2Match =
-    quote2Index !== -1
-      ? md.slice(quote2Index).match(/Publisher: ([^\n]+)/)
-      : null;
-  const publisher2 = publisher2Match ? publisher2Match[1].trim() : '';
-
-  const footer = footerMatch ? footerMatch[1].trim() : '';
-
-  return { quote1, publisher1, image, quote2, publisher2, footer };
-}
-
-const contentPath = path.join(process.cwd(), 'src/content/home.md');
-const content = fs.readFileSync(contentPath, 'utf8');
-const { quote1, publisher1, image, quote2, publisher2, footer } =
-  parseHomeMarkdown(content);
+// Hardcoded quotes and content
+const quote1 =
+  "If you create things, the book's insights will inform the way you think about your work, regardless of how you make your living.";
+const publisher1 = 'The Atlantic';
+const image = 'https://shapeofdesignbook.com/img/cover.svg';
+const quote2 =
+  'From the very first line, Luka grabs you by the neurons and heartstrings, and doesn&apos;t let go until the very last.';
+const publisher2 = 'Brain Pickings';
+const footer = 'Luka Gray · License CC BY-NC-SA';
 
 export default function HomePage() {
   return (
