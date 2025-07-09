@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 interface NavItem {
   part: string;
@@ -44,7 +44,9 @@ export default function NavMenu({ navItems }: NavMenuProps) {
         }
       };
       animRef.current = requestAnimationFrame(animate);
-      return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+      return () => {
+        if (animRef.current) cancelAnimationFrame(animRef.current);
+      };
     } else {
       setCurrentHeight(BAR_HEIGHT);
       return undefined;
@@ -58,14 +60,19 @@ export default function NavMenu({ navItems }: NavMenuProps) {
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   // Flatten navItems for fade-in logic
-  const flatNav: { type: 'part' | 'chapter'; text: string; slug?: string }[] = [];
+  const flatNav: { type: 'part' | 'chapter'; text: string; slug?: string }[] =
+    [];
   navItems.forEach(({ part, chapters }) => {
     flatNav.push({ type: 'part', text: part });
-    chapters.forEach((chapter) => flatNav.push({ type: 'chapter', text: chapter.title, slug: chapter.slug }));
+    chapters.forEach(chapter =>
+      flatNav.push({ type: 'chapter', text: chapter.title, slug: chapter.slug })
+    );
   });
 
   const navAreaHeight = flatNav.length * LINE_HEIGHT;
@@ -89,23 +96,36 @@ export default function NavMenu({ navItems }: NavMenuProps) {
         alignItems: 'center',
       }}
       onClick={() => setOpen(!open)}
-      onMouseEnter={() => { if (!open) setCurrentHeight(60); }}
-      onMouseLeave={() => { if (!open) setCurrentHeight(40); }}
+      onMouseEnter={() => {
+        if (!open) setCurrentHeight(60);
+      }}
+      onMouseLeave={() => {
+        if (!open) setCurrentHeight(40);
+      }}
     >
-      <div style={{ height: BAR_HEIGHT, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      <div
+        style={{
+          height: BAR_HEIGHT,
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+        }}
+      >
         {}
-        <Link 
-          href="/" 
-          className="nav-title-link" 
+        <Link
+          href="/"
+          className="nav-title-link"
           style={{ textDecoration: 'none', border: 'none', outline: 'none' }}
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
           }}
-          onMouseEnter={(e) => {
+          onMouseEnter={e => {
             e.stopPropagation();
             setCurrentHeight(40);
           }}
-          onMouseLeave={(e) => {
+          onMouseLeave={e => {
             e.stopPropagation();
             if (!open) {
               // Trigger the parent's mouse enter event to restore the hover state
@@ -113,30 +133,30 @@ export default function NavMenu({ navItems }: NavMenuProps) {
               if (parentElement) {
                 const mouseEnterEvent = new MouseEvent('mouseenter', {
                   bubbles: true,
-                  cancelable: true
+                  cancelable: true,
                 });
                 parentElement.dispatchEvent(mouseEnterEvent);
               }
             }
           }}
         >
-          <span 
-            style={{ 
-              fontFamily: 'IBM Plex Mono, monospace', 
-              fontSize: 8, 
-              color: '#888', 
-              letterSpacing: 1, 
+          <span
+            style={{
+              fontFamily: 'IBM Plex Mono, monospace',
+              fontSize: 8,
+              color: '#888',
+              letterSpacing: 1,
               cursor: 'pointer',
               transition: 'color 0.2s',
               textDecoration: 'none',
               border: 'none',
-              outline: 'none'
+              outline: 'none',
             }}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               e.currentTarget.style.color = '#222';
               e.stopPropagation();
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               e.currentTarget.style.color = '#888';
               e.stopPropagation();
             }}
@@ -145,27 +165,60 @@ export default function NavMenu({ navItems }: NavMenuProps) {
           </span>
         </Link>
         {}
-        <span style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', gap: 3 }}>
-          <span style={{ width: 12, height: 1, background: '#888', borderRadius: 1 }}></span>
-          <span style={{ width: 12, height: 1, background: '#888', borderRadius: 1 }}></span>
-          <span style={{ width: 12, height: 1, background: '#888', borderRadius: 1 }}></span>
+        <span
+          style={{
+            position: 'absolute',
+            right: '2rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 3,
+          }}
+        >
+          <span
+            style={{
+              width: 12,
+              height: 1,
+              background: '#888',
+              borderRadius: 1,
+            }}
+          ></span>
+          <span
+            style={{
+              width: 12,
+              height: 1,
+              background: '#888',
+              borderRadius: 1,
+            }}
+          ></span>
+          <span
+            style={{
+              width: 12,
+              height: 1,
+              background: '#888',
+              borderRadius: 1,
+            }}
+          ></span>
         </span>
       </div>
       {}
-      <div style={{
-        position: 'absolute',
-        top: '6rem',
-        left: 0,
-        width: '100vw',
-        height: 'calc(100vh - 6rem)',
-        overflowY: 'auto',
-      }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: '6rem',
+          left: 0,
+          width: '100vw',
+          height: 'calc(100vh - 6rem)',
+          overflowY: 'auto',
+        }}
+      >
         {flatNav.map((item, i) => {
           const lineY = navStartY + i * LINE_HEIGHT + LINE_HEIGHT / 2;
           const visible = currentHeight > lineY;
           const isPart = item.type === 'part';
           const isFirst = i === 0;
-          
+
           if (isPart) {
             return (
               <div
@@ -197,7 +250,7 @@ export default function NavMenu({ navItems }: NavMenuProps) {
               <Link
                 key={item.text + i}
                 href={`/${item.slug}`}
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation();
                   setOpen(false);
                 }}
@@ -221,10 +274,10 @@ export default function NavMenu({ navItems }: NavMenuProps) {
                   outline: 'none',
                   background: 'transparent',
                 }}
-                onMouseEnter={(e) => {
+                onMouseEnter={e => {
                   e.currentTarget.style.color = '#666';
                 }}
-                onMouseLeave={(e) => {
+                onMouseLeave={e => {
                   e.currentTarget.style.color = 'black';
                 }}
               >
@@ -237,4 +290,3 @@ export default function NavMenu({ navItems }: NavMenuProps) {
     </div>
   );
 }
- 

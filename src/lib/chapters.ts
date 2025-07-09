@@ -43,31 +43,32 @@ export interface NavItem {
 
 // Hardcoded part order
 const PART_ORDER = [
-  "INTRODUCTION",
-  "Part I: FOUNDATIONS",
-  "Part II: BUILDING", 
-  "Part III: TURNING",
-  "Part IV: SELLING",
-  "Part V: PRESSURING"
+  'INTRODUCTION',
+  'Part I: FOUNDATIONS',
+  'Part II: BUILDING',
+  'Part III: TURNING',
+  'Part IV: SELLING',
+  'Part V: PRESSURING',
 ];
 
 // Get all chapters' data
 export function getAllChapters(): Chapter[] {
   const contentDir = path.join(process.cwd(), 'src/content');
-  const chapters = fs.readdirSync(contentDir)
+  const chapters = fs
+    .readdirSync(contentDir)
     .filter(f => f.endsWith('.md') && f !== 'home.md')
     .map(f => {
       const slug = f.replace(/\.md$/, '');
       const md = fs.readFileSync(path.join(contentDir, f), 'utf8');
       return { slug, ...parseChapterMarkdown(md) };
     });
-  
+
   // Sort by part order, then by chapter order
   return chapters.sort((a, b) => {
     const partA = PART_ORDER.indexOf(a.part);
     const partB = PART_ORDER.indexOf(b.part);
     if (partA !== partB) return partA - partB;
-    
+
     // If same part, sort by order field
     return a.order - b.order;
   });
@@ -76,33 +77,36 @@ export function getAllChapters(): Chapter[] {
 // Get navigation items grouped by part
 export function getNavItems(): NavItem[] {
   const chapters = getAllChapters();
-  
+
   // Group chapters by part
-  const grouped = chapters.reduce((acc, chapter) => {
-    if (!acc[chapter.part]) {
-      acc[chapter.part] = [];
-    }
-    acc[chapter.part].push({
-      slug: chapter.slug,
-      title: chapter.chapterTitle,
-      order: chapter.order
-    });
-    return acc;
-  }, {} as Record<string, { slug: string; title: string; order: number }[]>);
+  const grouped = chapters.reduce(
+    (acc, chapter) => {
+      if (!acc[chapter.part]) {
+        acc[chapter.part] = [];
+      }
+      acc[chapter.part].push({
+        slug: chapter.slug,
+        title: chapter.chapterTitle,
+        order: chapter.order,
+      });
+      return acc;
+    },
+    {} as Record<string, { slug: string; title: string; order: number }[]>
+  );
 
   // Convert to array format and sort by hardcoded part order
-  return PART_ORDER
-    .filter(part => grouped[part]) // Only include parts that have chapters
+  return PART_ORDER.filter(part => grouped[part]) // Only include parts that have chapters
     .map(part => ({
       part,
-      chapters: grouped[part].sort((a, b) => a.order - b.order) // Sort chapters by order within each part
+      chapters: grouped[part].sort((a, b) => a.order - b.order), // Sort chapters by order within each part
     }));
 }
 
 // Get all chapter slugs for static generation
 export function getAllChapterSlugs(): string[] {
   const contentDir = path.join(process.cwd(), 'src/content');
-  return fs.readdirSync(contentDir)
+  return fs
+    .readdirSync(contentDir)
     .filter(f => f.endsWith('.md') && f !== 'home.md')
     .map(f => f.replace(/\.md$/, ''));
-} 
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { getAllChapters, getAllChapterSlugs, Chapter } from '../../lib/chapters';
+import { getAllChapters, getAllChapterSlugs } from '../../lib/chapters';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -15,7 +15,7 @@ interface ChapterPageProps {
 export default async function ChapterPage({ params }: ChapterPageProps) {
   const { slug } = await params;
   const chapters = getAllChapters();
-  const chapter = chapters.find((c) => c.slug === slug);
+  const chapter = chapters.find(c => c.slug === slug);
 
   if (!chapter) return <div>Chapter not found.</div>;
 
@@ -27,7 +27,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         <div
           className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none"
           style={{
-            backgroundImage: chapter.keyImage ? `url(${chapter.keyImage})` : undefined,
+            backgroundImage: chapter.keyImage
+              ? `url(${chapter.keyImage})`
+              : undefined,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -38,27 +40,28 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           }}
         ></div>
         {}
-        <div
-          className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0"
-        >
+        <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               components={{
                 p: ({ children, ...props }) => {
                   // If the paragraph is empty or only contains whitespace, render as a spacer
-                  if (!children || (typeof children === 'string' && children.trim() === '')) {
+                  if (
+                    !children ||
+                    (typeof children === 'string' && children.trim() === '')
+                  ) {
                     return <div className="h-6" />;
                   }
                   return <p {...props}>{children}</p>;
-                }
+                },
               }}
             >
               {chapter.content}
             </ReactMarkdown>
           </div>
         </div>
-        
+
         {}
         <ChapterNavigation currentSlug={slug} />
       </div>
@@ -71,34 +74,37 @@ function ChapterNavigation({ currentSlug }: { currentSlug: string }) {
   const chapters = getAllChapters();
   const currentIndex = chapters.findIndex(c => c.slug === currentSlug);
   const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
-  const nextChapter = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
+  const nextChapter =
+    currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
 
   return (
     <>
       {}
       {prevChapter && (
-        <Link 
+        <Link
           href={`/${prevChapter.slug}`}
           className="fixed left-0 top-0 h-full w-[30px] flex items-center justify-center z-10 opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          style={{ 
-            background: 'linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,1))',
+          style={{
+            background:
+              'linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,1))',
             backdropFilter: 'blur(2px)',
-            left: '0px'
+            left: '0px',
           }}
         >
           <div className="text-2xl text-gray-700 font-light select-none">‹</div>
         </Link>
       )}
-      
+
       {}
       {nextChapter && (
-        <Link 
+        <Link
           href={`/${nextChapter.slug}`}
           className="fixed top-0 h-full w-[30px] flex items-center justify-center z-10 opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          style={{ 
-            background: 'linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1))',
+          style={{
+            background:
+              'linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1))',
             backdropFilter: 'blur(2px)',
-            right: '0px'
+            right: '0px',
           }}
         >
           <div className="text-2xl text-gray-700 font-light select-none">›</div>
