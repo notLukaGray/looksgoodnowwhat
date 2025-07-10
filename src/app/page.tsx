@@ -30,19 +30,19 @@ export default function HomePage() {
         </div>
         {}
         <div className="flex flex-col items-center justify-center p-2 lg:p-32 order-1 lg:order-2 lg:flex-1">
-          <div className="cover-shadow">
-            <Link href="/introduction" className="cursor-pointer">
+          <Link href="/introduction" className="cursor-pointer">
+            <div className="cover-shadow hover:scale-110 transition-all duration-300">
               <Image
                 src={image}
                 alt="Book Cover"
                 width={400}
                 height={520}
-                className="w-[240px] h-[320px] lg:w-[400px] lg:h-[520px] object-cover hover:opacity-90 hover:scale-110 transition-all duration-300"
+                className="w-[240px] h-[320px] lg:w-[400px] lg:h-[520px] object-cover hover:opacity-90 transition-all duration-300"
                 draggable={false}
                 priority
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         {}
         <div className="flex flex-col items-center justify-center text-center p-2 lg:p-32 order-3 lg:order-3 lg:flex-1">
