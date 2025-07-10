@@ -44,7 +44,14 @@ export async function generateMetadata({
       description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
       url: `${siteConfig.primaryDomain}/${slug}`,
       type: 'article',
-      images: chapter.keyImage ? [chapter.keyImage] : ['/apple-touch-icon.png'],
+      images: [
+        {
+          url: '/apple-touch-icon.png',
+          width: 180,
+          height: 180,
+          alt: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+        },
+      ],
     },
     // Twitter Card removed - no Twitter account
     alternates: {

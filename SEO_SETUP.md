@@ -83,27 +83,29 @@ social: {
 
 ### 📊 Analytics Setup (Recommended)
 
-#### Google Analytics 4
+#### Vercel Analytics (Recommended)
 
-Add to `src/app/layout.tsx`:
+Vercel Analytics is already installed and configured in your `src/app/layout.tsx`:
 
 ```typescript
-// Add this script tag in the head section
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-/>
-<script
-  dangerouslySetInnerHTML={{
-    __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    `,
-  }}
-/>
+import { Analytics } from '@vercel/analytics/react';
+
+// ... in your layout component
+<Analytics />
 ```
+
+**Benefits:**
+- Privacy-focused (GDPR compliant)
+- No cookies required
+- Lightweight and fast
+- Automatic integration with Vercel hosting
+- Real-time analytics dashboard
+
+**To view analytics:**
+1. Deploy to Vercel
+2. Go to your Vercel dashboard
+3. Click on your project
+4. Navigate to the "Analytics" tab
 
 #### Google Search Console
 

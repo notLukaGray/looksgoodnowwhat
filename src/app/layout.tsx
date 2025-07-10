@@ -3,6 +3,8 @@ import { Lora, IBM_Plex_Mono, Inter } from 'next/font/google';
 import NavMenu from '../components/NavMenu';
 import { getNavItems } from '../lib/chapters';
 import { siteConfig } from '../lib/config';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const lora = Lora({
   subsets: ['latin'],
@@ -138,6 +140,8 @@ export default function RootLayout({
       >
         <NavMenu navItems={navItems} />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
