@@ -3,6 +3,9 @@ export const siteConfig = {
   // Primary domain (for canonical URLs and structured data)
   primaryDomain: 'https://looksgoodnowwhat.com',
 
+  // Short domain for sharing
+  shortDomain: 'https://lgnw.space',
+
   // All valid domains
   domains: ['https://looksgoodnowwhat.com', 'https://lgnw.space'],
 

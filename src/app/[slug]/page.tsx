@@ -5,6 +5,7 @@ import { getAllChapters, getAllChapterSlugs } from '../../lib/chapters';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
+import ShareButton from '../../components/ShareButton';
 
 export async function generateStaticParams() {
   return getAllChapterSlugs().map(slug => ({ slug }));
@@ -73,7 +74,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-2.5rem)] gap-0 m-0 px-0">
         {/* Chapter Image */}
         <div
-          className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none"
+          className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-visible"
           style={{
             backgroundImage: chapter.keyImage
               ? `url(${chapter.keyImage})`
@@ -86,7 +87,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             minHeight: 0,
             minWidth: 0,
           }}
-        ></div>
+        >
+          <ShareButton chapterTitle={chapter.chapterTitle} chapterSlug={slug} />
+        </div>
         {/* Chapter Content */}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
