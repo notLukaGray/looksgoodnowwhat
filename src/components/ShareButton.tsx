@@ -51,7 +51,7 @@ export default function ShareButton({
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-        
+
         try {
           document.execCommand('copy');
           setCopied(true);
@@ -95,10 +95,10 @@ export default function ShareButton({
           transition: 'all 0.2s',
           animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         }}
-        onMouseEnter={(e) => {
+        onMouseEnter={e => {
           e.currentTarget.style.backgroundColor = '#9d4c1e';
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={e => {
           e.currentTarget.style.backgroundColor = '#b95b23';
         }}
         title="Share this chapter"
