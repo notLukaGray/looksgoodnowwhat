@@ -1,0 +1,29 @@
+{
+  "name": "Looks Good, Now What",
+  "short_name": "Looks Good",
+  "description": "Strategic Design Thinking for Students and Educators",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#dfdfdf",
+  "theme_color": "#dfdfdf",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "books", "design"],
+  "lang": "en"
+}

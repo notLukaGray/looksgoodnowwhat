@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { getAllChapters, getAllChapterSlugs } from '../../lib/chapters';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { siteConfig } from '../../lib/config';
 
 export async function generateStaticParams() {
   return getAllChapterSlugs().map(slug => ({ slug }));
@@ -10,6 +12,45 @@ export async function generateStaticParams() {
 
 interface ChapterPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ChapterPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const chapters = getAllChapters();
+  const chapter = chapters.find(c => c.slug === slug);
+
+  if (!chapter) {
+    return {
+      title: 'Chapter Not Found',
+      description: 'The requested chapter could not be found.',
+    };
+  }
+
+  return {
+    title: chapter.chapterTitle,
+    description: `Chapter ${chapter.order}: ${chapter.chapterTitle} - Strategic design thinking insights for students and educators.`,
+    keywords: [
+      'design thinking',
+      'strategic design',
+      chapter.chapterTitle.toLowerCase(),
+      'design education',
+      'creative process',
+      'design strategy',
+    ],
+    openGraph: {
+      title: chapter.chapterTitle,
+      description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+      url: `${siteConfig.primaryDomain}/${slug}`,
+      type: 'article',
+      images: chapter.keyImage ? [chapter.keyImage] : ['/apple-touch-icon.png'],
+    },
+    // Twitter Card removed - no Twitter account
+    alternates: {
+      canonical: `/${slug}`,
+    },
+  };
 }
 
 export default async function ChapterPage({ params }: ChapterPageProps) {
@@ -23,7 +64,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     <div className="min-h-screen bg-[#dfdfdf]">
       <div style={{ height: '40px' }}></div>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-2.5rem)] gap-0 m-0 px-0">
-        {}
+        {/* Chapter Image */}
         <div
           className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none"
           style={{
@@ -39,7 +80,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             minWidth: 0,
           }}
         ></div>
-        {}
+        {/* Chapter Content */}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
             <ReactMarkdown
@@ -62,9 +103,37 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           </div>
         </div>
 
-        {}
+        {/* Navigation */}
         <ChapterNavigation currentSlug={slug} />
       </div>
+
+      {/* Structured Data for Chapter */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Chapter',
+            name: chapter.chapterTitle,
+            description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+            position: chapter.order,
+            isPartOf: {
+              '@type': 'Book',
+              name: 'Looks Good, Now What',
+              author: {
+                '@type': 'Person',
+                name: 'Luka Gray',
+              },
+            },
+            url: `${siteConfig.primaryDomain}/${slug}`,
+            mainEntity: {
+              '@type': 'WebPage',
+              name: chapter.chapterTitle,
+              description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+            },
+          }),
+        }}
+      />
     </div>
   );
 }
@@ -79,7 +148,6 @@ function ChapterNavigation({ currentSlug }: { currentSlug: string }) {
 
   return (
     <>
-      {}
       {prevChapter && (
         <Link
           href={`/${prevChapter.slug}`}
@@ -95,7 +163,6 @@ function ChapterNavigation({ currentSlug }: { currentSlug: string }) {
         </Link>
       )}
 
-      {}
       {nextChapter && (
         <Link
           href={`/${nextChapter.slug}`}

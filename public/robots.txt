@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://looksgoodnowwhat.com/sitemap.xml
+
+# Allow both domains
+User-agent: *
+Allow: /
+
+# Additional sitemap for secondary domain (optional)
+# Sitemap: https://lgnw.space/sitemap.xml
+
+# Disallow Next.js internal files
+Disallow: /_next/
+Disallow: /api/
+
+# Allow finished pages only
+Allow: /
+
+# Comment out pages that aren't finished yet
+# Allow: /about/
+# Allow: /resources/
+# Allow: /chapters/ 

@@ -2,6 +2,7 @@ import './globals.css';
 import { Lora, IBM_Plex_Mono, Inter } from 'next/font/google';
 import NavMenu from '../components/NavMenu';
 import { getNavItems } from '../lib/chapters';
+import { siteConfig } from '../lib/config';
 
 const lora = Lora({
   subsets: ['latin'],
@@ -22,9 +23,75 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Looks Good, Now What',
-  description: 'A book by Luka Gray',
+  title: {
+    default: siteConfig.title,
+    template: '%s | Looks Good, Now What',
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author }],
+  creator: siteConfig.author,
+  publisher: siteConfig.author,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(siteConfig.primaryDomain),
+  alternates: {
+    canonical: '/',
+  },
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
+  // themeColor: '#dfdfdf', // Removed as per Next.js 15+ requirements
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.primaryDomain,
+    siteName: 'Looks Good, Now What',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: '/apple-touch-icon.png',
+        width: 180,
+        height: 180,
+        alt: 'Looks Good, Now What - Book Cover',
+      },
+    ],
+  },
+  // Twitter Card removed - no Twitter account
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+    yahoo: 'your-yahoo-verification-code',
+  },
 };
+
+// Add viewport export for theme color
+export function generateViewport() {
+  return {
+    themeColor: '#dfdfdf',
+  };
+}
 
 export default function RootLayout({
   children,
@@ -35,6 +102,37 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        {}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Book',
+              name: 'Looks Good, Now What',
+              description:
+                'A comprehensive guide to strategic design thinking for students and educators',
+              author: {
+                '@type': 'Person',
+                name: 'Luka Gray',
+              },
+              publisher: {
+                '@type': 'Person',
+                name: 'Luka Gray',
+              },
+              url: siteConfig.primaryDomain,
+              isbn: siteConfig.book.isbn,
+              genre: siteConfig.book.genre,
+              audience: {
+                '@type': 'Audience',
+                audienceType: siteConfig.book.audience,
+              },
+              educationalLevel: siteConfig.book.educationalLevel,
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${lora.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased bg-[#dfdfdf] text-[#222]`}
       >

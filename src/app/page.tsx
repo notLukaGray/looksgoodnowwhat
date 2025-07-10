@@ -9,7 +9,7 @@ const image = 'https://shapeofdesignbook.com/img/cover.svg';
 const quote2 =
   'From the very first line, Luka grabs you by the neurons and heartstrings, and doesn&apos;t let go until the very last.';
 const publisher2 = 'Brain Pickings';
-const footer = 'Luka Gray · License CC BY-NC-SA';
+const footer = 'Luka Gray · © All Rights Reserved';
 
 export default function HomePage() {
   return (

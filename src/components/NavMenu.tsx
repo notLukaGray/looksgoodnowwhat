@@ -14,7 +14,7 @@ interface NavMenuProps {
 
 const BAR_HEIGHT = 40;
 const ANIMATION_DURATION = 1000; // ms
-const LINE_HEIGHT = 16; // px, for nav item spacing
+const LINE_HEIGHT = 20; // px, for nav item spacing
 
 export default function NavMenu({ navItems }: NavMenuProps) {
   const [open, setOpen] = useState(false);
