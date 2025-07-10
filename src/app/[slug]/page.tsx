@@ -47,9 +47,9 @@ export async function generateMetadata({
       type: 'article',
       images: [
         {
-          url: '/apple-touch-icon.png',
-          width: 180,
-          height: 180,
+          url: chapter.keyImage || '/apple-touch-icon.png',
+          width: 1200,
+          height: 630,
           alt: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
         },
       ],
