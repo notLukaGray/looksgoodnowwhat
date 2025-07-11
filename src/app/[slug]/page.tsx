@@ -40,6 +40,9 @@ export async function generateMetadata({
       'creative process',
       'design strategy',
     ],
+    authors: [{ name: 'Luka Gray' }],
+    creator: 'Luka Gray',
+    publisher: 'Luka Gray',
     openGraph: {
       title: chapter.chapterTitle,
       description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
@@ -53,10 +56,19 @@ export async function generateMetadata({
           alt: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
         },
       ],
+      publishedTime: '2024-01-01',
+      modifiedTime: new Date().toISOString(),
+      section: 'Design Education',
+      tags: ['design thinking', 'strategic design', 'education'],
     },
     // Twitter Card removed - no Twitter account
     alternates: {
       canonical: `/${slug}`,
+    },
+    other: {
+      'article:author': 'Luka Gray',
+      'article:section': 'Design Education',
+      'article:tag': 'design thinking, strategic design, education',
     },
   };
 }
@@ -117,31 +129,75 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         <ChapterNavigation currentSlug={slug} />
       </div>
 
-      {/* Structured Data for Chapter */}
+      {/* Enhanced Structured Data for Chapter */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Chapter',
-            name: chapter.chapterTitle,
-            description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
-            position: chapter.order,
-            isPartOf: {
-              '@type': 'Book',
-              name: 'Looks Good, Now What',
+          __html: JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: chapter.chapterTitle,
+              description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
               author: {
                 '@type': 'Person',
                 name: 'Luka Gray',
               },
+              publisher: {
+                '@type': 'Person',
+                name: 'Luka Gray',
+              },
+              datePublished: '2024-01-01',
+              dateModified: new Date().toISOString(),
+              url: `${siteConfig.primaryDomain}/${slug}`,
+              image: chapter.keyImage || '/apple-touch-icon.png',
+              articleSection: 'Design Education',
+              keywords: 'design thinking, strategic design, education',
+              educationalLevel: 'intermediate',
+              audience: {
+                '@type': 'Audience',
+                audienceType: 'students, young professionals',
+              },
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `${siteConfig.primaryDomain}/${slug}`,
+              },
             },
-            url: `${siteConfig.primaryDomain}/${slug}`,
-            mainEntity: {
-              '@type': 'WebPage',
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Chapter',
               name: chapter.chapterTitle,
               description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+              position: chapter.order,
+              isPartOf: {
+                '@type': 'Book',
+                name: 'Looks Good, Now What',
+                author: {
+                  '@type': 'Person',
+                  name: 'Luka Gray',
+                },
+              },
+              url: `${siteConfig.primaryDomain}/${slug}`,
             },
-          }),
+            {
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: siteConfig.primaryDomain,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: chapter.chapterTitle,
+                  item: `${siteConfig.primaryDomain}/${slug}`,
+                },
+              ],
+            },
+          ]),
         }}
       />
     </div>

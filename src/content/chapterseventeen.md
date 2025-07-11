@@ -1,11 +1,43 @@
 Part: Part III: TURNING
 KeyImage: https://example.com/keyimage17.jpg
-Chapter: Chapter Seventeen
-Chapter Title: How to Know if it Works
-Quote: Placeholder quote for Chapter Seventeen.
-Quote Author: Author Name
+Chapter Title: Brief to Breakthrough
 Order: 17
 
 ---
 
-This is the body of Chapter Seventeen. You can use **markdown** here, including [links](#), paragraphs, and indents.
+# In the works.
+
+## Passing it by my editor. We will be discussing:
+
+- **Brief Deconstruction Methods**
+  - Explicit vs. implicit requirements
+  - Brief questioning and clarification
+  - Assumption identification and testing
+  - Brief gap analysis and completion
+- **Strategic Brief Translation**
+  - Strategic objective extraction
+  - Creative opportunity identification
+  - Constraint to creative catalyst conversion
+  - Brief to creative brief transformation
+- **Concept Ideation Frameworks**
+  - Brief-driven ideation techniques
+  - Concept territory exploration
+  - Creative leap methodology
+  - Concept diversity and range
+- **Concept Evaluation and Selection**
+  - Concept evaluation criteria development
+  - Strategic fit assessment
+  - Concept feasibility analysis
+  - Concept differentiation evaluation
+- **Concept Development and Refinement**
+  - Concept expansion and exploration
+  - Concept testing and validation
+  - Concept optimization and improvement
+  - Concept flexibility and adaptation
+- **Concept Communication and Buy-in**
+  - Concept presentation strategy
+  - Stakeholder alignment techniques
+  - Concept documentation standards
+  - Concept approval and sign-off
+
+<div style="height: 120px;"></div>

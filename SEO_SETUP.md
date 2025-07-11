@@ -40,18 +40,17 @@
 #### 2. Domain Configuration
 
 The site is configured to work with both domains:
+
 - **Primary**: `https://looksgoodnowwhat.com` (used for canonical URLs)
 - **Secondary**: `https://lgnw.space`
 
 The configuration is centralized in `src/lib/config.ts`. Update the following if needed:
+
 ```typescript
 // In src/lib/config.ts
 export const siteConfig = {
   primaryDomain: 'https://looksgoodnowwhat.com', // Keep this as primary
-  domains: [
-    'https://looksgoodnowwhat.com',
-    'https://lgnw.space',
-  ],
+  domains: ['https://looksgoodnowwhat.com', 'https://lgnw.space'],
   // ... other settings
 };
 ```
@@ -95,6 +94,7 @@ import { Analytics } from '@vercel/analytics/react';
 ```
 
 **Benefits:**
+
 - Privacy-focused (GDPR compliant)
 - No cookies required
 - Lightweight and fast
@@ -102,6 +102,7 @@ import { Analytics } from '@vercel/analytics/react';
 - Real-time analytics dashboard
 
 **To view analytics:**
+
 1. Deploy to Vercel
 2. Go to your Vercel dashboard
 3. Click on your project

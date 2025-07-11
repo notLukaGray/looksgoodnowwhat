@@ -1,11 +1,33 @@
 Part: Part III: TURNING
 KeyImage: https://example.com/keyimage18.jpg
-Chapter: Chapter Eighteen
-Chapter Title: The Minimum Lovable Concept
-Quote: Placeholder quote for Chapter Eighteen.
-Quote Author: Author Name
+Chapter Title: Proof, Not Opinions
 Order: 18
 
 ---
 
-This is the body of Chapter Eighteen. You can use **markdown** here, including [links](#), paragraphs, and indents.
+# In the works.
+
+## Passing it by my editor. We will be discussing:
+
+- **Success Definition Framework**
+  - Success criteria establishment
+  - Quantitative vs. qualitative metrics
+  - Stakeholder-specific success criteria
+  - Success measurement timeline
+- **Basic Testing Methods**
+  - A/B testing for creative decisions
+  - User feedback collection techniques
+  - Concept testing and validation
+  - Performance measurement basics
+- **Strategic Validation Process**
+  - Hypothesis formation and testing
+  - Evidence collection and analysis
+  - Result interpretation and application
+  - Decision-making from data
+- **Iterative Improvement**
+  - Result-based refinement strategies
+  - Continuous improvement processes
+  - Learning integration methods
+  - Performance optimization basics
+
+<div style="height: 120px;"></div>

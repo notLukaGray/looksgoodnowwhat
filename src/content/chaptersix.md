@@ -1,11 +1,38 @@
 Part: Part I: FOUNDATIONS
 KeyImage: https://example.com/keyimage6.jpg
-Chapter: Chapter Six
 Chapter Title: Emotional vs. Functional
-Quote: Placeholder quote for Chapter Six.
-Quote Author: Author Name
 Order: 06
 
 ---
 
-This is the body of Chapter Six. You can use **markdown** here, including [links](#), paragraphs, and indents.
+# In the works.
+
+## Passing it by my editor. We will be discussing:
+
+- **Understanding the Emotion-Function Spectrum**
+  - Emotional vs. functional design priorities
+  - When emotion should dominate
+  - When function must come first
+  - Integration strategies for both
+- **Emotional Design Principles**
+  - Emotional trigger identification
+  - Visceral, behavioral, and reflective design levels
+  - Personality expression through design
+  - Emotional journey mapping
+- **Functional Design Requirements**
+  - Usability heuristics and principles
+  - Accessibility standards and implementation
+  - Information architecture and hierarchy
+  - Performance and efficiency considerations
+- **Measuring Emotional Impact**
+  - Emotional response testing methods
+  - Brand personality assessment
+  - User sentiment analysis
+  - Long-term emotional connection tracking
+- **Strategic Balance Decision-Making**
+  - Audience needs assessment
+  - Business goal alignment
+  - Industry and context considerations
+  - Resource allocation for emotion vs. function
+
+<div style="height: 120px;"></div>

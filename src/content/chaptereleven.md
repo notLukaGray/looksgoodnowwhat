@@ -1,11 +1,43 @@
 Part: Part II: BUILDING
 KeyImage: https://example.com/keyimage11.jpg
-Chapter: Chapter Eleven
 Chapter Title: Descriptive vs. Suggestive Thinking
-Quote: Placeholder quote for Chapter Eleven.
-Quote Author: Author Name
 Order: 11
 
 ---
 
-This is the body of Chapter Eleven. You can use **markdown** here, including [links](#), paragraphs, and indents.
+# In the works.
+
+## Passing it by my editor. We will be discussing:
+
+- **Understanding Communication Approaches**
+  - Descriptive vs. suggestive spectrum
+  - Literal vs. metaphorical communication
+  - Direct vs. indirect message delivery
+  - Explicit vs. implicit meaning creation
+- **Descriptive Design Applications**
+  - Information-heavy communication needs
+  - Technical and instructional content
+  - Accessibility and clarity requirements
+  - Crisis and urgent communication
+- **Suggestive Design Applications**
+  - Brand building and emotional connection
+  - Luxury and aspirational positioning
+  - Creative and entertainment industries
+  - Long-term relationship building
+- **Audience and Context Analysis**
+  - Audience sophistication assessment
+  - Cultural communication preferences
+  - Industry communication norms
+  - Competitive communication landscape
+- **Strategic Communication Selection**
+  - Business objective alignment
+  - Brand personality integration
+  - Message urgency and importance
+  - Available time and attention
+- **Hybrid Approach Development**
+  - Combining descriptive and suggestive elements
+  - Progressive disclosure strategies
+  - Layered communication techniques
+  - Multi-touchpoint communication planning
+
+<div style="height: 120px;"></div>

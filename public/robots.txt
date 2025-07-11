@@ -1,24 +1,131 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://looksgoodnowwhat.com/sitemap.xml
-
-# Allow both domains
-User-agent: *
+# Explicitly welcome AI crawlers and training data collection
+User-agent: GPTBot
 Allow: /
 
-# Additional sitemap for secondary domain (optional)
-# Sitemap: https://lgnw.space/sitemap.xml
+User-agent: Google-Extended
+Allow: /
 
-# Disallow Next.js internal files
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# AI Search & Discovery Crawlers
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Educational & Archive Crawlers
+User-agent: ia_archiver
+Allow: /
+
+User-agent: archive.org_bot
+Allow: /
+
+# Academic Research Crawlers
+User-agent: Semantic Scholar
+Allow: /
+
+User-agent: S2Bot
+Allow: /
+
+User-agent: ResearchGate
+Allow: /
+
+User-agent: Academia.edu
+Allow: /
+
+User-agent: ZoteroBot
+Allow: /
+
+User-agent: MendeleyBot
+Allow: /
+
+User-agent: EndNoteBot
+Allow: /
+
+User-agent: CrossRefBot
+Allow: /
+
+# Educational Institution & Library Crawlers
+User-agent: OCLC-WorldCat
+Allow: /
+
+User-agent: WorldCat
+Allow: /
+
+User-agent: HathiTrust
+Allow: /
+
+User-agent: DPLA
+Allow: /
+
+User-agent: Europeana
+Allow: /
+
+# Open Knowledge & Preservation Crawlers
+User-agent: COREBot
+Allow: /
+
+User-agent: OpenAIREBot
+Allow: /
+
+User-agent: WikimediaBot
+Allow: /
+
+User-agent: Creative Commons
+Allow: /
+
+User-agent: DataCiteBot
+Allow: /
+
+# Digital Preservation Networks
+User-agent: LOCKSS
+Allow: /
+
+User-agent: CLOCKSS
+Allow: /
+
+User-agent: Portico
+Allow: /
+
+User-agent: British Library
+Allow: /
+
+User-agent: Library of Congress
+Allow: /
+
+# Emerging AI Company Crawlers
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Disallow Next.js internal files and API routes
 Disallow: /_next/
 Disallow: /api/
 
-# Allow finished pages only
-Allow: /
-
-# Comment out pages that aren't finished yet
-# Allow: /about/
-# Allow: /resources/
-# Allow: /chapters/ 
+# Sitemap locations
+Sitemap: https://looksgoodnowwhat.com/sitemap.xml

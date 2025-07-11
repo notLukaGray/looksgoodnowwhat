@@ -1,11 +1,33 @@
 Part: Part III: TURNING
 KeyImage: https://example.com/keyimage16.jpg
-Chapter: Chapter Sixteen
-Chapter Title: From Brief to Concept
-Quote: Placeholder quote for Chapter Sixteen.
-Quote Author: Author Name
+Chapter Title: Making the Invisible Visible
 Order: 16
 
 ---
 
-This is the body of Chapter Sixteen. You can use **markdown** here, including [links](#), paragraphs, and indents.
+# In the works.
+
+## Passing it by my editor. We will be discussing:
+
+- **Abstract Concept Analysis**
+  - Invisible concept identification
+  - Concept complexity assessment
+  - Concept component breakdown
+  - Concept relationship mapping
+- **Visualization Strategy Development**
+  - Metaphor and analogy selection
+  - Symbolic representation systems
+  - Visual narrative construction
+  - Progressive revelation planning
+- **Tangible Expression Techniques**
+  - Abstract to concrete translation
+  - Sensory experience design
+  - Interactive concept exploration
+  - Multi-modal communication
+- **Complexity Management**
+  - Information hierarchy for complex concepts
+  - Layered understanding development
+  - Concept scaffolding techniques
+  - Cognitive load management
+
+<div style="height: 120px;"></div>

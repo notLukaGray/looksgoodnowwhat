@@ -95,11 +95,25 @@ export function getNavItems(): NavItem[] {
   );
 
   // Convert to array format and sort by hardcoded part order
-  return PART_ORDER.filter(part => grouped[part]) // Only include parts that have chapters
+  const navItems = PART_ORDER.filter(part => grouped[part]) // Only include parts that have chapters
     .map(part => ({
       part,
       chapters: grouped[part].sort((a, b) => a.order - b.order), // Sort chapters by order within each part
     }));
+
+  // Add the About page as a special section after all chapters
+  navItems.push({
+    part: 'ABOUT',
+    chapters: [
+      {
+        slug: 'about',
+        title: 'About Luka Gray',
+        order: 999, // High order number to ensure it appears last
+      },
+    ],
+  });
+
+  return navItems;
 }
 
 // Get all chapter slugs for static generation

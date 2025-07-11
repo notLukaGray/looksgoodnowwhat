@@ -286,6 +286,8 @@ export default function NavMenu({ navItems }: NavMenuProps) {
             );
           }
         })}
+        {}
+        <div style={{ height: '120px' }}></div>
       </div>
     </div>
   );

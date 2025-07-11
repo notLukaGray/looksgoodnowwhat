@@ -86,12 +86,18 @@ export const metadata = {
     yandex: 'your-yandex-verification-code',
     yahoo: 'your-yahoo-verification-code',
   },
+  other: {
+    'content-language': 'en',
+    'revisit-after': '7 days',
+  },
 };
 
 // Add viewport export for theme color
 export function generateViewport() {
   return {
     themeColor: '#dfdfdf',
+    width: 'device-width',
+    initialScale: 1,
   };
 }
 
@@ -105,33 +111,56 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {}
+        <meta charSet="utf-8" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Book',
-              name: 'Looks Good, Now What',
-              description:
-                'A comprehensive guide to strategic design thinking for students and educators',
-              author: {
-                '@type': 'Person',
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Book',
+                name: 'Looks Good, Now What',
+                description:
+                  'A comprehensive guide to strategic design thinking for students and educators',
+                author: {
+                  '@type': 'Person',
+                  name: 'Luka Gray',
+                },
+                publisher: {
+                  '@type': 'Person',
+                  name: 'Luka Gray',
+                },
+                url: siteConfig.primaryDomain,
+                isbn: siteConfig.book.isbn,
+                genre: siteConfig.book.genre,
+                audience: {
+                  '@type': 'Audience',
+                  audienceType: siteConfig.book.audience,
+                },
+                educationalLevel: siteConfig.book.educationalLevel,
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: 'Looks Good, Now What',
+                url: siteConfig.primaryDomain,
+                description: siteConfig.description,
+                author: {
+                  '@type': 'Person',
+                  name: 'Luka Gray',
+                },
+                inLanguage: 'en-US',
+                copyrightYear: '2024',
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
                 name: 'Luka Gray',
+                url: siteConfig.primaryDomain,
+                logo: `${siteConfig.primaryDomain}/apple-touch-icon.png`,
+                sameAs: [],
               },
-              publisher: {
-                '@type': 'Person',
-                name: 'Luka Gray',
-              },
-              url: siteConfig.primaryDomain,
-              isbn: siteConfig.book.isbn,
-              genre: siteConfig.book.genre,
-              audience: {
-                '@type': 'Audience',
-                audienceType: siteConfig.book.audience,
-              },
-              educationalLevel: siteConfig.book.educationalLevel,
-            }),
+            ]),
           }}
         />
       </head>

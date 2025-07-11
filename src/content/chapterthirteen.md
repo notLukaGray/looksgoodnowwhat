@@ -1,11 +1,43 @@
 Part: Part II: BUILDING
 KeyImage: https://example.com/keyimage13.jpg
-Chapter: Chapter Thirteen
 Chapter Title: Creative Process
-Quote: Placeholder quote for Chapter Thirteen.
-Quote Author: Author Name
 Order: 13
 
 ---
 
-This is the body of Chapter Thirteen. You can use **markdown** here, including [links](#), paragraphs, and indents.
+# In the works.
+
+## Passing it by my editor. We will be discussing:
+
+- **Process Architecture Development**
+  - Custom process design for different projects
+  - Process adaptation and flexibility
+  - Process documentation and sharing
+  - Process improvement and optimization
+- **Ideation and Exploration Methods**
+  - Divergent thinking techniques
+  - Convergent thinking applications
+  - Ideation session planning and facilitation
+  - Creative exploration without judgment
+- **Concept Development Workflows**
+  - Concept generation to refinement
+  - Concept evaluation and selection
+  - Concept development and expansion
+  - Concept presentation and approval
+- **Collaboration and Team Process**
+  - Creative collaboration frameworks
+  - Team ideation and decision-making
+  - Creative conflict resolution
+  - Process alignment across team members
+- **Time and Resource Management**
+  - Creative work scheduling
+  - Resource allocation for creative phases
+  - Deadline management without killing creativity
+  - Efficiency in creative processes
+- **Process Evaluation and Improvement**
+  - Process effectiveness measurement
+  - Creative output quality assessment
+  - Process bottleneck identification
+  - Continuous process improvement
+
+<div style="height: 120px;"></div>
