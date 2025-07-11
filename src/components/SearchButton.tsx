@@ -5,6 +5,8 @@ interface SearchButtonProps {
   mode: 'open' | 'search';
   className?: string;
   style?: React.CSSProperties;
+  onMouseEnter?: () => void;
+  onMouseLeave?: (e: React.MouseEvent) => void;
 }
 
 export default function SearchButton({
@@ -12,6 +14,8 @@ export default function SearchButton({
   mode,
   className = '',
   style = {},
+  onMouseEnter,
+  onMouseLeave,
 }: SearchButtonProps) {
   const isSearchMode = mode === 'search';
 
@@ -36,9 +40,11 @@ export default function SearchButton({
         e.currentTarget.style.background = isSearchMode
           ? '#f3f4f6'
           : 'transparent';
+        onMouseEnter?.();
       }}
       onMouseLeave={e => {
         e.currentTarget.style.background = 'transparent';
+        onMouseLeave?.(e);
       }}
       title={isSearchMode ? 'Search' : 'Search the book'}
     >

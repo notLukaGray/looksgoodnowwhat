@@ -229,6 +229,7 @@ export default function NavMenu({ navItems }: NavMenuProps) {
             alignItems: 'center',
             gap: '8px',
           }}
+          onClick={e => e.stopPropagation()}
           onMouseEnter={() => setHovered(false)}
           onMouseLeave={e => {
             // Check if mouse is still over nav bar
@@ -250,6 +251,7 @@ export default function NavMenu({ navItems }: NavMenuProps) {
               overflow: 'hidden',
               boxSizing: 'content-box',
             }}
+            onClick={e => e.stopPropagation()}
           >
             <input
               ref={searchInputRef}
@@ -282,8 +284,16 @@ export default function NavMenu({ navItems }: NavMenuProps) {
                 }
                 e.stopPropagation();
               }}
-              onMouseEnter={e => e.stopPropagation()}
-              onMouseLeave={e => e.stopPropagation()}
+              onMouseEnter={() => setHovered(false)}
+              onMouseLeave={(e: React.MouseEvent) => {
+                if (navBarRef.current) {
+                  const { clientX, clientY } = e;
+                  const el = document.elementFromPoint(clientX, clientY);
+                  if (el && navBarRef.current.contains(el)) {
+                    setHovered(true);
+                  }
+                }
+              }}
             />
             <SearchButton
               onClick={e => {
@@ -299,6 +309,16 @@ export default function NavMenu({ navItems }: NavMenuProps) {
                 }
               }}
               mode={searchActive && query.trim() ? 'search' : 'open'}
+              onMouseEnter={() => setHovered(false)}
+              onMouseLeave={(e: React.MouseEvent) => {
+                if (navBarRef.current) {
+                  const { clientX, clientY } = e;
+                  const el = document.elementFromPoint(clientX, clientY);
+                  if (el && navBarRef.current.contains(el)) {
+                    setHovered(true);
+                  }
+                }
+              }}
             />
           </div>
         </div>
