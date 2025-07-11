@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import { getAllChapters, getAllChapterSlugs } from '../../lib/chapters';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
 import ShareButton from '../../components/ShareButton';
+import MarkdownWithAnchors from '../../components/MarkdownWithAnchors';
 
 export async function generateStaticParams() {
   return getAllChapterSlugs().map(slug => ({ slug }));
@@ -105,23 +104,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         {/* Chapter Content */}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
-            <ReactMarkdown
-              rehypePlugins={[rehypeRaw]}
-              components={{
-                p: ({ children, ...props }) => {
-                  // If the paragraph is empty or only contains whitespace, render as a spacer
-                  if (
-                    !children ||
-                    (typeof children === 'string' && children.trim() === '')
-                  ) {
-                    return <div className="h-6" />;
-                  }
-                  return <p {...props}>{children}</p>;
-                },
-              }}
-            >
-              {chapter.content}
-            </ReactMarkdown>
+            <MarkdownWithAnchors content={chapter.content} />
           </div>
         </div>
 

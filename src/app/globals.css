@@ -38,11 +38,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html,
-body {
-  overflow: hidden;
-}
-
 ::selection {
   background: #fff29e;
 }
@@ -124,24 +119,20 @@ em {
   background-image: none;
 }
 
-/* Make empty paragraphs create vertical space */
 .prose p:empty {
   height: 1.5rem;
   margin: 0;
 }
 
-/* Alternative: Make paragraphs with only whitespace create space */
 .prose p:blank {
   height: 1.5rem;
   margin: 0;
 }
 
-/* Make multiple consecutive empty paragraphs create more space */
 .prose p:empty + p:empty {
   height: 2rem;
 }
 
-/* Override prose link styling for navbar title */
 .nav-title-link {
   text-decoration: none !important;
   background-image: none !important;
@@ -217,4 +208,9 @@ em {
   body {
     margin: 0;
   }
+}
+
+html,
+body {
+  overflow: hidden;
 }
