@@ -166,6 +166,9 @@ export default function RootLayout({
       </head>
       <body
         className={`${lora.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased bg-[#dfdfdf] text-[#222]`}
+        style={{
+          paddingTop: '60px', // Account for navbar height (40px normal + 20px buffer)
+        }}
       >
         <NavMenu navItems={navItems} />
         {children}

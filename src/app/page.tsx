@@ -12,7 +12,7 @@ const footer = 'Luka Gray · © All Rights Reserved';
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#dfdfdf] flex flex-col px-2 py-16 overflow-x-hidden">
+    <main className="min-h-screen bg-[#dfdfdf] flex flex-col px-2 pb-16 pt-8 overflow-x-hidden">
       <div className="flex-1 mx-auto flex flex-col lg:flex-row justify-center items-center lg:h-full w-full lg:gap-8">
         {}
         <div className="h-10 lg:hidden"></div>

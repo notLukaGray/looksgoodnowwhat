@@ -81,7 +81,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
   return (
     <div className="min-h-screen bg-[#dfdfdf]">
-      <div style={{ height: '40px' }}></div>
+      <div style={{ height: '60px' }}></div>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-2.5rem)] gap-0 m-0 px-0">
         {/* Chapter Image */}
         <div

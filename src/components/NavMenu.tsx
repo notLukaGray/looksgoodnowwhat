@@ -155,6 +155,13 @@ export default function NavMenu({ navItems }: NavMenuProps) {
       });
   }, []);
 
+  // Reset navbar state when route changes
+  useEffect(() => {
+    setOpen(false);
+    setHovered(false);
+    handleSearchDeactivate();
+  }, [router]);
+
   // Prevent background scroll when nav is open
   useEffect(() => {
     if (open) {
