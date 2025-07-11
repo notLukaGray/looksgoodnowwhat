@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import SearchButton from './SearchButton';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { SearchResult } from '@/lib/search';
 
 interface NavItem {
@@ -30,6 +30,7 @@ export default function NavMenu({ navItems }: NavMenuProps) {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const navBarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   // Debounced search function
   const debouncedSearch = useRef<NodeJS.Timeout | null>(null);
@@ -160,7 +161,7 @@ export default function NavMenu({ navItems }: NavMenuProps) {
     setOpen(false);
     setHovered(false);
     handleSearchDeactivate();
-  }, [router]);
+  }, [pathname]);
 
   // Prevent background scroll when nav is open
   useEffect(() => {
