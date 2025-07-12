@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#dfdfdf]">
-      <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-2.5rem)] gap-0 m-0 px-0">
+    <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
+      <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
         {}
         <div
           className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-visible"
@@ -47,7 +47,7 @@ export default function AboutPage() {
             backgroundRepeat: 'no-repeat',
             width: '100%',
             height: '100%',
-            minHeight: 0,
+            minHeight: '25vh',
             minWidth: 0,
           }}
         ></div>
@@ -55,8 +55,6 @@ export default function AboutPage() {
         {}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
-            <div style={{ height: '80px' }}></div>
-
             <h1>About The Author</h1>
 
             <div style={{ height: '20px' }}></div>
@@ -80,7 +78,7 @@ export default function AboutPage() {
             <div style={{ height: '20px' }}></div>
 
             <p>
-              For the past three years I&apos;ve lectured at the University of
+              For the past several years I&apos;ve lectured at the University of
               Nebraska–Lincoln and traveled to colleges across the Midwest,
               challenging students to tie every creative decision to a clear
               strategic purpose. Whether the brief calls for packaging,
@@ -124,7 +122,7 @@ export default function AboutPage() {
             <p>
               And before you hit export, pause. Ask who feels the impact, good
               or bad. Design is our way of pointing art and language at real
-              people; let&apos;s use that power on purpose.
+              people; let&apos;s use that power with purpose.
             </p>
 
             <div style={{ height: '20px' }}></div>
@@ -231,13 +229,6 @@ export default function AboutPage() {
                   <em>Design Justice</em>
                 </strong>{' '}
                 by Sasha Costanza-Chock – Equity first design practice.
-              </li>
-              <li>
-                <strong>
-                  <em>Designing for Diversity</em>
-                </strong>{' '}
-                by Katie Swindler et al. – Practical checklists for inclusive
-                products.
               </li>
             </ul>
 

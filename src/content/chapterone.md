@@ -8,7 +8,7 @@ Order: 01
 
 ---
 
-<div style="height: 80px;"></div>
+<div style="height: 40px;"></div>
 
 # Creative Theory in Design
 

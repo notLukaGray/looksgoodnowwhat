@@ -10,18 +10,21 @@ const lora = Lora({
   subsets: ['latin'],
   variable: '--font-serif',
   weight: ['400', '700'],
+  display: 'swap',
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   weight: ['400', '700'],
+  display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   weight: ['400', '700', '900'],
+  display: 'swap',
 });
 
 export const metadata = {
@@ -166,9 +169,6 @@ export default function RootLayout({
       </head>
       <body
         className={`${lora.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased bg-[#dfdfdf] text-[#222]`}
-        style={{
-          paddingTop: '60px', // Account for navbar height (40px normal + 20px buffer)
-        }}
       >
         <NavMenu navItems={navItems} />
         {children}

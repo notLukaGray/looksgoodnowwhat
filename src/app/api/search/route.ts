@@ -1,13 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSearchIndex, performSearch } from '@/lib/search';
 
-// Create the search index once when the API starts
+// Create the search index with caching and TTL
 let searchIndex: ReturnType<typeof createSearchIndex> | null = null;
+let lastIndexTime = 0;
+const INDEX_TTL = 5 * 60 * 1000; // 5 minutes
 
 function getSearchIndex() {
-  if (!searchIndex) {
+  const now = Date.now();
+
+  if (!searchIndex || now - lastIndexTime > INDEX_TTL) {
     console.log('Initializing search index...');
     searchIndex = createSearchIndex();
+    lastIndexTime = now;
     console.log(
       `Search index created with ${searchIndex.data.length} chapters`
     );

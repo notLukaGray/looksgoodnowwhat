@@ -163,9 +163,9 @@ export default function SearchClientPage() {
       style={{
         fontFamily: 'IBM Plex Mono, monospace',
         minHeight: '100vh',
+        paddingTop: '40px',
       }}
     >
-      <div style={{ height: '40px' }}></div>
       <div
         style={{
           position: 'sticky',
@@ -272,7 +272,7 @@ export default function SearchClientPage() {
       <div
         ref={resultsContainerRef}
         style={{
-          height: 'calc(100vh - 420px)',
+          height: 'calc(100vh - 40px - 280px)', // 100vh - navbar - header area (more precise)
           overflowY: 'auto',
           padding: '2rem 2rem 2rem 2rem',
           paddingRight: 'calc(2rem + 8px)',

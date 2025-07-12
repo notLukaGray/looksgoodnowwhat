@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getAllChapters, Chapter } from '../lib/chapters';
 import { siteConfig } from '../lib/config';
+import { cache } from 'react';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Cache the sitemap generation
+const generateSitemap = cache((): MetadataRoute.Sitemap => {
   const chapters = getAllChapters();
   const baseUrl = siteConfig.primaryDomain;
 
@@ -31,4 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [...staticPages, ...chapterPages];
+});
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return generateSitemap();
 }

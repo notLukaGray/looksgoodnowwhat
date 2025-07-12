@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { cache } from 'react';
 
 // Helper to parse frontmatter and content
 function parseChapterMarkdown(md: string) {
@@ -51,8 +52,8 @@ const PART_ORDER = [
   'Part V: PRESSURING',
 ];
 
-// Get all chapters' data
-export function getAllChapters(): Chapter[] {
+// Get all chapters' data (cached)
+export const getAllChapters = cache((): Chapter[] => {
   const contentDir = path.join(process.cwd(), 'src/content');
   const chapters = fs
     .readdirSync(contentDir)
@@ -72,10 +73,10 @@ export function getAllChapters(): Chapter[] {
     // If same part, sort by order field
     return a.order - b.order;
   });
-}
+});
 
-// Get navigation items grouped by part
-export function getNavItems(): NavItem[] {
+// Get navigation items grouped by part (cached)
+export const getNavItems = cache((): NavItem[] => {
   const chapters = getAllChapters();
 
   // Group chapters by part
@@ -114,13 +115,13 @@ export function getNavItems(): NavItem[] {
   });
 
   return navItems;
-}
+});
 
-// Get all chapter slugs for static generation
-export function getAllChapterSlugs(): string[] {
+// Get all chapter slugs for static generation (cached)
+export const getAllChapterSlugs = cache((): string[] => {
   const contentDir = path.join(process.cwd(), 'src/content');
   return fs
     .readdirSync(contentDir)
     .filter(f => f.endsWith('.md') && f !== 'home.md')
     .map(f => f.replace(/\.md$/, ''));
-}
+});
