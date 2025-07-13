@@ -1,6 +1,59 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { siteConfig } from '../lib/config';
+
+export const metadata: Metadata = {
+  title: 'Looks Good, Now What - Strategic Design Thinking',
+  description:
+    'A comprehensive guide to strategic design thinking for students and educators. Learn to make design work in the real world.',
+  keywords: [
+    'design thinking',
+    'strategic design',
+    'design education',
+    'creative process',
+    'design strategy',
+    'design book',
+    'Luka Gray',
+  ],
+  authors: [{ name: 'Luka Gray' }],
+  creator: 'Luka Gray',
+  publisher: 'Luka Gray',
+  openGraph: {
+    title: 'Looks Good, Now What - Strategic Design Thinking',
+    description:
+      'A comprehensive guide to strategic design thinking for students and educators',
+    url: siteConfig.primaryDomain,
+    type: 'website',
+    images: [
+      {
+        url: '/BOOK_COVER.png',
+        width: 400,
+        height: 520,
+        alt: 'Looks Good, Now What - Book Cover',
+      },
+    ],
+  },
+  alternates: {
+    canonical: siteConfig.primaryDomain,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  other: {
+    'content-language': 'en',
+    'revisit-after': '7 days',
+  },
+};
 
 // Homepage content
 const quote1 = "You've learned to make it look good...";

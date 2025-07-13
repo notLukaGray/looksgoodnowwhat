@@ -29,7 +29,22 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: '/about',
+    canonical: `${siteConfig.primaryDomain}/about`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  other: {
+    'content-language': 'en',
+    'revisit-after': '7 days',
   },
 };
 

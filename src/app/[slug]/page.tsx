@@ -62,12 +62,25 @@ export async function generateMetadata({
     },
     // Twitter Card removed - no Twitter account
     alternates: {
-      canonical: `/${slug}`,
+      canonical: `${siteConfig.primaryDomain}/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
     other: {
       'article:author': 'Luka Gray',
       'article:section': 'Design Education',
       'article:tag': 'design thinking, strategic design, education',
+      'content-language': 'en',
+      'revisit-after': '7 days',
     },
   };
 }
@@ -132,7 +145,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               datePublished: '2024-01-01',
               dateModified: new Date().toISOString(),
               url: `${siteConfig.primaryDomain}/${slug}`,
-              image: chapter.keyImage || '/apple-touch-icon.png',
+              image: chapter.keyImage
+                ? `${siteConfig.primaryDomain}${chapter.keyImage}`
+                : `${siteConfig.primaryDomain}/apple-touch-icon.png`,
               articleSection: 'Design Education',
               keywords: 'design thinking, strategic design, education',
               educationalLevel: 'intermediate',

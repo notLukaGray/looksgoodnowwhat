@@ -43,9 +43,6 @@ export const metadata = {
     telephone: false,
   },
   metadataBase: new URL(siteConfig.primaryDomain),
-  alternates: {
-    canonical: '/',
-  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
