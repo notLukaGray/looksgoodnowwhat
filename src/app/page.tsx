@@ -5,9 +5,9 @@ import { Metadata } from 'next';
 import { siteConfig } from '../lib/config';
 
 export const metadata: Metadata = {
-  title: 'Looks Good, Now What - Strategic Design Thinking',
+  title: 'Looks Good, Now What',
   description:
-    'A comprehensive guide to strategic design thinking for students and educators. Learn to make design work in the real world.',
+    'A comprehensive guide to strategic design thinking for students and educators. Learn practical approaches to design challenges and career development.',
   keywords: [
     'design thinking',
     'strategic design',
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   creator: 'Luka Gray',
   publisher: 'Luka Gray',
   openGraph: {
-    title: 'Looks Good, Now What - Strategic Design Thinking',
+    title: 'Looks Good, Now What',
     description:
-      'A comprehensive guide to strategic design thinking for students and educators',
+      'A comprehensive guide to strategic design thinking for students and educators. Learn practical approaches to design challenges and career development.',
     url: siteConfig.primaryDomain,
     type: 'website',
     images: [
@@ -69,6 +69,9 @@ export default function HomePage() {
       className="min-h-screen bg-[#dfdfdf] flex flex-col px-2 py-16 overflow-x-hidden"
       style={{ paddingTop: '40px' }}
     >
+      <h1 className="text-center text-4xl font-bold mb-8">
+        Strategic Design Thinking
+      </h1>
       <div className="flex-1 mx-auto flex flex-col lg:flex-row justify-center items-center lg:h-full w-full lg:gap-8">
         {}
         <div className="h-10 lg:hidden"></div>

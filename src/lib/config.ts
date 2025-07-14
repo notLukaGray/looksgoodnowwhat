@@ -17,8 +17,7 @@ export const siteConfig = {
   getCanonicalUrl: (path: string) => `https://looksgoodnowwhat.com${path}`,
 
   // Site metadata
-  title:
-    'Looks Good, Now What - Strategic Design Thinking for Students and Educators',
+  title: 'Looks Good, Now What',
   description:
     'A comprehensive guide to strategic design thinking for students and educators. Learn practical approaches to design challenges, client relationships, and career development in the creative industry.',
   author: 'Luka Gray',
