@@ -1,7 +1,6 @@
 Part: INTRODUCTION
 KeyImage: https://images.unsplash.com/photo-1664855183995-9fc5d06f0997
 Chapter: Introduction
-Chapter Title: Introduction
 Order: 00
 AudioFile: /vo/introduction-audio.mp3
 AudioText: Introduction

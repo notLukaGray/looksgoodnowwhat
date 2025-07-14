@@ -1,7 +1,6 @@
 Part: Part I: FOUNDATIONS
 KeyImage: https://free-images.com/or/80f1/typography_geschtaltung_fonts_1069409.jpg
 Chapter: Chapter One
-Chapter Title: Creative Theory in Design
 Quote: Design is where science and art break even.
 Quote Author: Robin Mathew
 Order: 01

@@ -1,21 +1,11 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-// Dynamically import AudioPlayer with SSR disabled
-const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
-  ssr: false,
-  loading: () => null,
-});
+import AudioPlayer from './AudioPlayer';
 
 interface AudioPlayerWrapperProps {
   src?: string;
-  title?: string;
 }
 
-export default function AudioPlayerWrapper({
-  src,
-  title,
-}: AudioPlayerWrapperProps) {
-  return <AudioPlayer src={src} title={title} />;
+export default function AudioPlayerWrapper({ src }: AudioPlayerWrapperProps) {
+  return <AudioPlayer src={src} />;
 }

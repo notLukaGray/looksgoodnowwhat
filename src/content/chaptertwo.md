@@ -1,7 +1,6 @@
 Part: Part I: FOUNDATIONS
 KeyImage: https://images.unsplash.com/photo-1670753834083-60129bd8d771
 Chapter: Chapter Two
-Chapter Title: Framing: What Are We Solving?
 Quote: Simplicity is about subtracting the obvious and adding the meaningful.
 Quote Author: John Maeda
 Order: 02
