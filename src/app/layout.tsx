@@ -81,15 +81,10 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  // verification: {
-  //   google: 'your-google-verification-code', // Add when setting up Google Search Console
-  //   yandex: 'your-yandex-verification-code', // Optional - Russian search engine
-  //   yahoo: 'your-yahoo-verification-code', // Optional - Yahoo search
-  //   bing: 'your-bing-verification-code', // Add when setting up Bing Webmaster Tools
-  // },
   other: {
     'content-language': 'en',
     'revisit-after': '7 days',
+    'msvalidate.01': '30C80AE81BD7AF50BF9D005609FD1A54', // Bing verification
   },
 };
 
