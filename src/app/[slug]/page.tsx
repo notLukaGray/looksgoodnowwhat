@@ -136,13 +136,10 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                   alignItems: 'flex-start',
                 }}
               >
-                {}
-                <div
-                  id="audio-player-placeholder"
-                  data-audio-src={chapter.audioFile}
-                  style={{ display: 'none' }}
+                <AudioPlayerWrapper
+                  src={chapter.audioFile}
+                  title={chapter.chapterTitle}
                 />
-                <AudioPlayerWrapper />
               </div>
             </div>
           )}
