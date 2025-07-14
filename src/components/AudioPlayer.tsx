@@ -13,30 +13,31 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
   const [duration, setDuration] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const [audioLoaded, setAudioLoaded] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+  // Create audio element only when first needed
+  const ensureAudioElement = () => {
+    if (!audioRef.current && src) {
+      audioRef.current = new Audio(src);
+      audioRef.current.preload = 'metadata';
 
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
-    const handleEnded = () => setIsPlaying(false);
+      const updateTime = () => setCurrentTime(audioRef.current!.currentTime);
+      const updateDuration = () => {
+        setDuration(audioRef.current!.duration);
+        setAudioLoaded(true);
+      };
+      const handleEnded = () => setIsPlaying(false);
 
-    audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
-    audio.addEventListener('ended', handleEnded);
-
-    return () => {
-      audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
-      audio.removeEventListener('ended', handleEnded);
-    };
-  }, []);
+      audioRef.current.addEventListener('timeupdate', updateTime);
+      audioRef.current.addEventListener('loadedmetadata', updateDuration);
+      audioRef.current.addEventListener('ended', handleEnded);
+    }
+  };
 
   // Expand only after mount and when playing
   useEffect(() => {
@@ -45,7 +46,13 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
   }, [hasMounted, isPlaying]);
 
   const handlePlayClick = () => {
+    if (!src) return;
+
+    // Create audio element on first play
+    ensureAudioElement();
+
     if (!audioRef.current) return;
+
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
@@ -89,7 +96,6 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         minHeight: 64,
       }}
     >
-      <audio ref={audioRef} src={src} preload="metadata" />
       <div
         style={{
           background: '#b95b23',
@@ -143,7 +149,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
             </svg>
           )}
         </button>
-        {expanded && (
+        {expanded && audioLoaded && (
           <>
             <span
               style={{

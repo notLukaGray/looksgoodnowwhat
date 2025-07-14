@@ -22,6 +22,12 @@ const generateSitemap = cache((): MetadataRoute.Sitemap => {
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/table-of-contents`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
   ];
 
   // Chapter pages

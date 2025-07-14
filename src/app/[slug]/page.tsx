@@ -242,14 +242,18 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                 {
                   '@type': 'ListItem',
                   position: 1,
-                  name: 'Home',
-                  item: siteConfig.primaryDomain,
+                  item: {
+                    '@id': siteConfig.primaryDomain,
+                    name: 'Home',
+                  },
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: chapter.chapterTitle,
-                  item: `${siteConfig.primaryDomain}/${slug}`,
+                  item: {
+                    '@id': `${siteConfig.primaryDomain}/${slug}`,
+                    name: chapter.chapterTitle,
+                  },
                 },
               ],
             },
