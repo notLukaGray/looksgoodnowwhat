@@ -11,6 +11,8 @@ function parseChapterMarkdown(md: string) {
   const quoteMatch = md.match(/Quote: ([^\n]+)/);
   const quoteAuthorMatch = md.match(/Quote Author: ([^\n]+)/);
   const orderMatch = md.match(/Order: (\d+)/);
+  const audioFileMatch = md.match(/AudioFile: ([^\n]+)/);
+  const audioTextMatch = md.match(/AudioText: ([^\n]+)/);
   const contentMatch = md.match(/---\n([\s\S]*)/);
 
   return {
@@ -21,6 +23,8 @@ function parseChapterMarkdown(md: string) {
     quote: quoteMatch ? quoteMatch[1].trim() : '',
     quoteAuthor: quoteAuthorMatch ? quoteAuthorMatch[1].trim() : '',
     order: orderMatch ? parseInt(orderMatch[1]) : 999,
+    audioFile: audioFileMatch ? audioFileMatch[1].trim() : '',
+    audioText: audioTextMatch ? audioTextMatch[1].trim() : '',
     content: contentMatch ? contentMatch[1].trim() : '',
   };
 }
@@ -34,6 +38,8 @@ export interface Chapter {
   quote: string;
   quoteAuthor: string;
   order: number;
+  audioFile: string;
+  audioText: string;
   content: string;
 }
 

@@ -5,6 +5,8 @@ Chapter Title: Framing: What Are We Solving?
 Quote: Simplicity is about subtracting the obvious and adding the meaningful.
 Quote Author: John Maeda
 Order: 02
+AudioFile: /vo/chaptertwo-audio.mp3
+AudioText: Chapter Two
 
 ---
 

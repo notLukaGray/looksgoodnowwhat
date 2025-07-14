@@ -3,15 +3,15 @@ KeyImage: https://images.unsplash.com/photo-1664855183995-9fc5d06f0997
 Chapter: Introduction
 Chapter Title: Introduction
 Order: 00
+AudioFile: /vo/introduction-audio.mp3
+AudioText: Introduction
 
 ---
-
-<div style="height: 40px;"></div>
 
 # Introduction
 
 <div class="quote-text" style="color:#666; font-size: 1rem; max-width: 34rem; text-align:left">
-  “Design is intelligence made visible.”
+  "Design is intelligence made visible."
 </div>
 <div class="quote-publisher" style="color:#666; font-size: 1rem; max-width: 34rem; text-align:left">
   Alina Wheeler 
@@ -19,16 +19,16 @@ Order: 00
 
 <div style="height: 50px;"></div>
 
-I was twenty-one, second month on the job, still learning which floor had the leftover food from client calls. Our agency was pitching a national beer brand. I still remember sitting in my little cubical dredging up music video after music video trying to splice together something that could sell a campaign that was bolstering with millenial angst and fuck ton of lifestyle imagery.
+I was twenty-one, second month on the job, still learning which floor had the leftover food from client calls. Our agency was pitching a national beer brand. I still remember sitting in my little cubical dredging up music video after music video trying to splice together something that could sell a campaign that was bolstering with millenial angst and a fuck ton of lifestyle imagery.
 
 <div style="height: 30px;"></div>
-The next day as we pitched the campaign, the client lead closed her laptop cleared her throat, and asked a simple question. "Why."
+The next day as we pitched the campaign, the client lead closed her laptop cleared her throat, and asked a simple question. "Why?"
 <div style="height: 10px;"></div>
 Silence. 
 <div style="height: 10px;"></div>
 I thought to myself, “Look at it; isn’t that enough?” 
 <div style="height: 10px;"></div>
-The deck never made it to round two. It took me a long time to figure out the reason that word stung so hard. "Why." A word that strips everything away leaving everything without substance to melt away.
+The deck never made it to round two. It took me a long time to figure out the reason that word stung so hard. "Why?" A word that strips everything away leaving everything without substance to melt away.
 
 <div style="height: 40px;"></div>
 

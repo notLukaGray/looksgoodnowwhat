@@ -207,6 +207,86 @@ em {
   letter-spacing: 0.1em;
 }
 
+/* Audio Player Styles */
+.audio-player-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.audio-player-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #b95b23;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  transition: all 0.2s ease;
+}
+
+/* Range input styling for audio player */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-track {
+  background: #e5e5e5;
+  height: 4px;
+  border-radius: 2px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #b95b23;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  background: #a04a1e;
+  transform: scale(1.1);
+}
+
+input[type='range']::-moz-range-track {
+  background: #e5e5e5;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+}
+
+input[type='range']::-moz-range-thumb {
+  background: #b95b23;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type='range']::-moz-range-thumb:hover {
+  background: #a04a1e;
+  transform: scale(1.1);
+}
+
 @media (max-width: 800px) {
   body {
     margin: 0;

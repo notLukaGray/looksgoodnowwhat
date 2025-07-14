@@ -1,10 +1,11 @@
 import React from 'react';
 import { getAllChapters, getAllChapterSlugs } from '../../lib/chapters';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
+import Link from 'next/link';
 import ShareButton from '../../components/ShareButton';
 import MarkdownWithAnchors from '../../components/MarkdownWithAnchors';
+import AudioPlayerWrapper from '../../components/AudioPlayerWrapper';
 
 export async function generateStaticParams() {
   return getAllChapterSlugs().map(slug => ({ slug }));
@@ -60,7 +61,6 @@ export async function generateMetadata({
       section: 'Design Education',
       tags: ['design thinking', 'strategic design', 'education'],
     },
-    // Twitter Card removed - no Twitter account
     alternates: {
       canonical: `${siteConfig.primaryDomain}/${slug}`,
     },
@@ -92,10 +92,15 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
   if (!chapter) return <div>Chapter not found.</div>;
 
+  const currentIndex = chapters.findIndex(c => c.slug === slug);
+  const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
+  const nextChapter =
+    currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
+
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
-        {/* Chapter Image */}
+        {}
         <div
           className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-visible"
           style={{
@@ -113,18 +118,78 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         >
           <ShareButton chapterTitle={chapter.chapterTitle} chapterSlug={slug} />
         </div>
-        {/* Chapter Content */}
+
+        {}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
+          {}
+          <div style={{ height: '100px' }} />
+
+          {}
+          {chapter.audioFile && chapter.audioText && (
+            <div className="w-4/5 mx-auto">
+              <div
+                style={{
+                  marginTop: '4rem',
+                  marginBottom: '0rem',
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start',
+                }}
+              >
+                {}
+                <div
+                  id="audio-player-placeholder"
+                  data-audio-src={chapter.audioFile}
+                  style={{ display: 'none' }}
+                />
+                <AudioPlayerWrapper />
+              </div>
+            </div>
+          )}
+
+          {}
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
             <MarkdownWithAnchors content={chapter.content} />
           </div>
         </div>
 
-        {/* Navigation */}
-        <ChapterNavigation currentSlug={slug} />
+        {}
+        {prevChapter && (
+          <Link
+            href={`/${prevChapter.slug}`}
+            className="fixed left-0 top-0 h-full w-[30px] flex items-center justify-center z-10 opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+            style={{
+              background:
+                'linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,1))',
+              backdropFilter: 'blur(2px)',
+              left: '0px',
+            }}
+          >
+            <div className="text-2xl text-gray-700 font-light select-none">
+              ‹
+            </div>
+          </Link>
+        )}
+
+        {nextChapter && (
+          <Link
+            href={`/${nextChapter.slug}`}
+            className="fixed top-0 h-full w-[30px] flex items-center justify-center z-10 opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+            style={{
+              background:
+                'linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1))',
+              backdropFilter: 'blur(2px)',
+              right: '0px',
+            }}
+          >
+            <div className="text-2xl text-gray-700 font-light select-none">
+              ›
+            </div>
+          </Link>
+        )}
       </div>
 
-      {/* Enhanced Structured Data for Chapter */}
+      {}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -143,7 +208,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                 name: 'Luka Gray',
               },
               datePublished: '2024-01-01',
-              dateModified: new Date().toISOString(),
+              dateModified: '2024-01-01',
               url: `${siteConfig.primaryDomain}/${slug}`,
               image: chapter.keyImage
                 ? `${siteConfig.primaryDomain}${chapter.keyImage}`
@@ -198,48 +263,5 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         }}
       />
     </div>
-  );
-}
-
-// Navigation component
-function ChapterNavigation({ currentSlug }: { currentSlug: string }) {
-  const chapters = getAllChapters();
-  const currentIndex = chapters.findIndex(c => c.slug === currentSlug);
-  const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
-  const nextChapter =
-    currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
-
-  return (
-    <>
-      {prevChapter && (
-        <Link
-          href={`/${prevChapter.slug}`}
-          className="fixed left-0 top-0 h-full w-[30px] flex items-center justify-center z-10 opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          style={{
-            background:
-              'linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,1))',
-            backdropFilter: 'blur(2px)',
-            left: '0px',
-          }}
-        >
-          <div className="text-2xl text-gray-700 font-light select-none">‹</div>
-        </Link>
-      )}
-
-      {nextChapter && (
-        <Link
-          href={`/${nextChapter.slug}`}
-          className="fixed top-0 h-full w-[30px] flex items-center justify-center z-10 opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          style={{
-            background:
-              'linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1))',
-            backdropFilter: 'blur(2px)',
-            right: '0px',
-          }}
-        >
-          <div className="text-2xl text-gray-700 font-light select-none">›</div>
-        </Link>
-      )}
-    </>
   );
 }

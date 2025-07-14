@@ -5,6 +5,8 @@ Chapter Title: Creative Theory in Design
 Quote: Design is where science and art break even.
 Quote Author: Robin Mathew
 Order: 01
+AudioFile: /vo/chapterone-audio.mp3
+AudioText: Chapter One
 
 ---
 
