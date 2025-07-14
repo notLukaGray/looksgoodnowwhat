@@ -13,19 +13,19 @@ const generateSitemap = cache((): MetadataRoute.Sitemap => {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/table-of-contents`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.8,
     },
   ];
@@ -34,7 +34,7 @@ const generateSitemap = cache((): MetadataRoute.Sitemap => {
   const chapterPages = chapters.map((chapter: Chapter) => ({
     url: `${baseUrl}/${chapter.slug}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
+    changeFrequency: 'daily' as const,
     priority: 0.8,
   }));
 
