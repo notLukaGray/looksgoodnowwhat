@@ -94,7 +94,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         style={{
           background: '#b95b23',
           borderRadius: 9999,
-          width: expanded ? 'min(400px, 90vw)' : 64,
+          width: expanded ? 'min(300px, 80vw)' : 64,
           height: 64,
           minWidth: 64,
           minHeight: 64,
@@ -105,8 +105,8 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
           boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
           overflow: 'hidden',
           position: 'relative',
-          paddingLeft: expanded ? 8 : 0,
-          paddingRight: expanded ? 24 : 0,
+          paddingLeft: expanded ? 4 : 0,
+          paddingRight: expanded ? 8 : 0,
         }}
       >
         <button
@@ -127,7 +127,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
             outline: 'none',
             zIndex: 2,
             position: 'relative',
-            marginRight: expanded ? 12 : 0,
+            marginRight: expanded ? 4 : 0,
             transition: 'margin-right 1s cubic-bezier(0.4,0,0.2,1)',
           }}
           aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
@@ -145,18 +145,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         </button>
         {expanded && (
           <>
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: 16,
-                color: '#fff',
-                minWidth: 48,
-                textAlign: 'right',
-                marginRight: 8,
-              }}
-            >
-              {formatTime(currentTime)}
-            </span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: '#fff', minWidth: 32, textAlign: 'right', marginRight: 4, marginLeft: 4, flexShrink: 0 }}>{formatTime(currentTime)}</span>
             <input
               type="range"
               min="0"
@@ -169,20 +158,11 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
                 background: 'rgba(255,255,255,0.2)',
                 borderRadius: 4,
                 height: 4,
-                marginRight: 8,
+                marginRight: 4,
+                minWidth: 0,
               }}
             />
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: 16,
-                color: '#fff',
-                minWidth: 48,
-                textAlign: 'right',
-              }}
-            >
-              {formatTime(duration)}
-            </span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: '#fff', minWidth: 32, textAlign: 'right', flexShrink: 0 }}>{formatTime(duration)}</span>
           </>
         )}
       </div>
