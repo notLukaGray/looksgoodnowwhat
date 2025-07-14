@@ -69,9 +69,7 @@ export default function HomePage() {
       className="min-h-screen bg-[#dfdfdf] flex flex-col px-2 py-16 overflow-x-hidden"
       style={{ paddingTop: '40px' }}
     >
-      <h1 className="text-center text-4xl font-bold mb-8">
-        Strategic Design Thinking
-      </h1>
+      <h1 className="sr-only">Strategic Design Thinking</h1>
       <div className="flex-1 mx-auto flex flex-col lg:flex-row justify-center items-center lg:h-full w-full lg:gap-8">
         {}
         <div className="h-10 lg:hidden"></div>
