@@ -64,6 +64,7 @@ If the brief is a pile of raw ingredients, the problem statement is the recipe: 
 Take this example. A typical brief might say:
 
 <div style="height: 20px;"></div>
+
 **"We need a modern, friendly website to help people learn about our new fitness app."**
 
 <div style="height: 20px;"></div>
@@ -73,6 +74,7 @@ It sounds reasonable. But it lacks strategic clarity. There's no clear goal beyo
 After proper investigation, a clearer problem statement might look like this:
 
 <div style="height: 20px;"></div>
+
 **"The goal is user acquisition, not just awareness. The audience—first-time gym-goers aged 25 to 40—often feels intimidated by traditional fitness spaces. Competitors rely on aggressive, performance-driven messaging. The challenge is to position the brand as approachable and beginner-friendly, using clear language, a supportive tone, and straightforward onboarding. Success will be measured by conversion to free trial sign-ups."**
 
 <div style="height: 20px;"></div>
