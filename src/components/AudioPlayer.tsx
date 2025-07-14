@@ -94,7 +94,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         style={{
           background: '#b95b23',
           borderRadius: 9999,
-          width: expanded ? 400 : 64,
+          width: expanded ? 'min(400px, 90vw)' : 64,
           height: 64,
           minWidth: 64,
           minHeight: 64,
