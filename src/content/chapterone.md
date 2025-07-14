@@ -33,12 +33,12 @@ So let us begin with what matters. Confidence. Don't worry, we aren't going down
 
 - **Creative theory** is the scaffolding underneath the work. It blends strategic logic, systems thinking, philosophy, and visual expression. It is not another layer on top of design. It is what makes design hold together.
 - **Conceptual thinking** is the ability to extract an idea and give it form. It starts with clarity and ends in coherence. Concepts are not tricks. They are tools. A strong concept aligns every part of a project. It limits the noise. It sharpens the intent.
-- **Concept** becomes our position. The concept tells you what matters and what doesn't. It draws a boundary around meaning. If conceptual thinking is the tool to achieve creative theory, the concept lives to turn that thinking into a digestible, actionable force that gives us, as creatives, the ability to judge our work against something concrete.
+- **Concept** becomes our position. The concept tells you what matters and ƒwhat doesn't. It draws a boundary around meaning. If conceptual thinking is the tool to achieve creative theory, the concept lives to turn that thinking into a digestible, actionable force that gives us, as creatives, the ability to judge our work against something concrete.
 - Lastly, **framing** becomes our narrative viewer. Who are we talking to? Why do we have the space to talk to them in the first place? How do we begin to resonate not only logically, but emotionally as well? Framing becomes a gut-check of our purpose.
 <div style="height: 20px;"></div>
 Creative theory and its underlying elements are not a set of universal rules. It is a way of reading situations, evaluating context, and forming an internal logic for every creative choice. It allows us to move from "what looks good" to "what holds up." From surface to structure. These logical constraints are not limitations. They allow you to focus. The tighter the constraint, the clearer the concept can become. They protect the idea from becoming watered down. They are what gives design direction.
 <div style="height: 20px;"></div>
-Donald Schön, in *The Reflective Practitioner* (1983), writes that "problem setting is the process in which we name the things to which we will attend." What we choose to see defines what we believe can be solved. Without some sort of process, we can easily lose sight of what we are trying to accomplish.
+Donald Schön, in <i>The Reflective Practitioner</i> (1983), writes that "problem setting is the process in which we name the things to which we will attend." What we choose to see defines what we believe can be solved. Without some sort of process, we can easily lose sight of what we are trying to accomplish.
 <div style="height: 20px;"></div>
 Remember: Design responds. Design instructs. Design argues. Every decision, if done right, is a move in a larger logic. Creative theory teaches us how to see logic.
 
