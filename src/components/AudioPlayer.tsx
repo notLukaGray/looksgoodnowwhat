@@ -145,7 +145,20 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         </button>
         {expanded && (
           <>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: '#fff', minWidth: 32, textAlign: 'right', marginRight: 4, marginLeft: 4, flexShrink: 0 }}>{formatTime(currentTime)}</span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 14,
+                color: '#fff',
+                minWidth: 32,
+                textAlign: 'right',
+                marginRight: 4,
+                marginLeft: 4,
+                flexShrink: 0,
+              }}
+            >
+              {formatTime(currentTime)}
+            </span>
             <input
               type="range"
               min="0"
@@ -162,7 +175,18 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
                 minWidth: 0,
               }}
             />
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: '#fff', minWidth: 32, textAlign: 'right', flexShrink: 0 }}>{formatTime(duration)}</span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 14,
+                color: '#fff',
+                minWidth: 32,
+                textAlign: 'right',
+                flexShrink: 0,
+              }}
+            >
+              {formatTime(duration)}
+            </span>
           </>
         )}
       </div>

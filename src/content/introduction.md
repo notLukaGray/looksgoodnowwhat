@@ -18,7 +18,7 @@ AudioText: Introduction
 
 <div style="height: 50px;"></div>
 
-I was twenty-one, second month on the job, still learning which floor had the leftover food from client calls. Our agency was pitching a national beer brand. I still remember sitting in my little cubical dredging up music video after music video trying to splice together something that could sell a campaign that was bolstering with millenial angst and a fuck ton of lifestyle imagery.
+I was twenty-one years old, second month on the job, still learning which floor had the leftover food from client calls. Our agency was pitching a national beer brand. I still remember sitting in my little cubical dredging up music video after music video trying to splice together something that could sell a campaign that was bolstering with millenial angst and a fuck ton of lifestyle imagery.
 
 <div style="height: 30px;"></div>
 The next day as we pitched the campaign, the client lead closed her laptop cleared her throat, and asked a simple question. "Why?"
