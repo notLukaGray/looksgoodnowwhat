@@ -165,19 +165,19 @@ So, keep asking, whose problem is it, really? Let that answer guide every brief 
 
 ### Language as a Growth Engine
 
-ZEE5 wanted to boost subscribers in smaller Indian towns. Instead of mimicking global streaming brands, they leaned into local belonging: a new identity, "Apni Bhasha, Apni Kahaniyan" (Our Language, Our Stories), paired with affordable regional subscription packs. This pivot tied product, pricing, and positioning to a single cultural truth: language creates loyalty. The result was lower acquisition costs and double the organic traffic.
+ZEE5 wanted to boost subscribers in smaller Indian towns. Instead of mimicking global streaming brands, they leaned into local belonging: a new identity, "Apni Bhasha, Apni Kahaniyan" (Our Language, Our Stories), paired with affordable regional subscription packs. This pivot tied product, pricing, and positioning to a single cultural truth: language creates loyalty. The result was lower acquisition costs and double the organic traffic. [Source](https://www.campaignindia.in/article/why-zee5s-language-first-bet-may-be-its-best-yet/503463)
 
 **Takeaway:** Framing allows for faster growth if it is more pointed.
 
 ### Selling Trees, Not Tents
 
-UK brand Tentsile had a problem: it needed to sell more tents to the US market. It repositioned itself not as a tent company, but as a reforestation movement. The message, "we sell tents so we can plant trees," turned a novelty product into a purpose-led brand, unlocking partnerships and planting over a million trees in the process.
+UK brand Tentsile had a problem: it needed to sell more tents to the US market. It repositioned itself not as a tent company, but as a reforestation movement. The message, "we sell tents so we can plant trees," turned a novelty product into a purpose-led brand, unlocking partnerships and planting over a million trees in the process. [Source](https://www.tentsile.com/blogs/news/the-story-of-tentsile?srsltid=AfmBOopGXGSWo-nnhmeU6fvrezTFWAhmN9-e5icDvrkfi_Z96PsWShnc)
 
 **Takeaway:** Lead with purpose, sell through proof. The audience cares.
 
 ### Outthinking the Competition
 
-With no budget and little brand awareness, Iceland's adult toy manufacturer, Blush, used surveys to shift their positioning to body-positive curiosity, then used guerrilla marketing to amplify it. What started as customer insight became national recognition and award-winning media coverage.
+With no budget and little brand awareness, Iceland's adult toy manufacturer, Blush, used surveys to shift their positioning to body-positive curiosity, then used guerrilla marketing to amplify it. What started as customer insight became national recognition and award-winning media coverage. [Source](https://brandrindex.com/blush/)
 
 **Takeaway:** Small brands can win by knowing their audience better.
 
