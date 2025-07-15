@@ -1,0 +1,31 @@
+
+    Developer: Luka Gray
+    Designer: Luka Gray
+    Author: Luka Gray
+    Publisher: Luka Gray
+
+
+    Last update: July 2025
+    Language: English
+    Doctype: HTML5
+    IDE: Cursor
+    Standards: HTML5, CSS3, TypeScript, Next.js
+    Components: React, Tailwind CSS
+    Software: Node.js, npm
+    TTS: Azure Speech Services (en-US-AlloyTurboMultilingualNeural)
+    Audio: 48kbps MP3, 24kHz, Mono
+    Accessibility: Full chapter narration, custom audio player
+    Content: 30+ chapters, strategic design education
+    Performance: Static generation, optimized for speed
+    SEO: Structured data, Open Graph, comprehensive metadata
+    Hosting: Vercel (edge deployment)
+    Analytics: Privacy-focused tracking
+    Fonts: System fonts for performance
+    Icons: Custom SVG icons
+    Search: Full-text chapter search
+    Navigation: Dynamic table of contents
+
+
+    Name: Luka Gray
+    From: The person who wrote, designed, and developed this entire experience
+    Message: This book represents years of design thinking, countless client conversations, and the belief that design education should be both practical and human. Every word, every layout, every interaction was crafted with care. Thank you for reading.
