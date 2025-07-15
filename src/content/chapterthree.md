@@ -1,5 +1,4 @@
 Part: Part I: FOUNDATIONS
-KeyImage: https://example.com/keyimage3.jpg
 Chapter Title: Creative Work as Argument
 Order: 03
 

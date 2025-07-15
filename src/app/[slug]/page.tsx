@@ -5,6 +5,7 @@ import { siteConfig } from '../../lib/config';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 // Lazy load non-critical components
 const ShareButton = dynamic(() => import('../../components/ShareButton'), {
@@ -120,7 +121,10 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const chapters = getAllChapters();
   const chapter = chapters.find(c => c.slug === slug);
 
-  if (!chapter) return <div>Chapter not found.</div>;
+  if (!chapter) {
+    // This will trigger the not-found.tsx page
+    notFound();
+  }
 
   const currentIndex = chapters.findIndex(c => c.slug === slug);
   const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;

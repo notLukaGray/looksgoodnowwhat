@@ -1,5 +1,4 @@
 Part: Part IV: SELLING
-KeyImage: https://example.com/keyimage22.jpg
 Chapter Title: Deck-Building Workshop
 Order: 22
 

@@ -1,5 +1,4 @@
 Part: Part IV: SELLING
-KeyImage: https://example.com/keyimage25.jpg
 Chapter Title: Creative or Confused
 Order: 25
 

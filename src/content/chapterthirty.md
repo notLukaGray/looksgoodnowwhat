@@ -1,5 +1,4 @@
 Part: Part V: PRESSURING
-KeyImage: https://example.com/keyimage30.jpg
 Chapter Title: What to Do When You Don't Know What to Do
 Order: 30
 

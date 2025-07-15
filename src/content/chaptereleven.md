@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage11.jpg
 Chapter Title: Descriptive vs. Suggestive Thinking
 Order: 11
 

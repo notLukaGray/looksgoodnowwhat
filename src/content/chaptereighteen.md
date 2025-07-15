@@ -1,5 +1,4 @@
 Part: Part III: TURNING
-KeyImage: https://example.com/keyimage18.jpg
 Chapter Title: Proof, Not Opinions
 Order: 18
 

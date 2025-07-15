@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage15.jpg
 Chapter Title: Concept to Execution
 Order: 15
 

@@ -63,18 +63,6 @@ const chapters = [
 export default function TableOfContentsPage() {
   return (
     <>
-      {/* JavaScript redirect for human users */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            if (!navigator.userAgent.includes('bot') && 
-                !navigator.userAgent.includes('crawler') && 
-                !navigator.userAgent.includes('spider')) {
-              window.location.href = '/';
-            }
-          `,
-        }}
-      />
       <h1>Table of Contents</h1>
       <p>All chapters in &quot;Looks Good, Now What&quot;:</p>
       <ul>

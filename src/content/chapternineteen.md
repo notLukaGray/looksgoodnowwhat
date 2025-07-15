@@ -1,5 +1,4 @@
 Part: Part III: TURNING
-KeyImage: https://example.com/keyimage19.jpg
 Chapter Title: The Minimum Lovable Concept
 Order: 19
 

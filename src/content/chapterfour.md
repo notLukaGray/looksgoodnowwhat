@@ -1,5 +1,4 @@
 Part: Part I: FOUNDATIONS
-KeyImage: https://example.com/keyimage4.jpg
 Chapter Title: Positioning That Means Something
 Order: 04
 

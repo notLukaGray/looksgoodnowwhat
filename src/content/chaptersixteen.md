@@ -1,5 +1,4 @@
 Part: Part III: TURNING
-KeyImage: https://example.com/keyimage16.jpg
 Chapter Title: Making the Invisible Visible
 Order: 16
 

@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage13.jpg
 Chapter Title: Creative Process
 Order: 13
 

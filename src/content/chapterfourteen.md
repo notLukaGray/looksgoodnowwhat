@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage14.jpg
 Chapter Title: Strategy as a Constraint
 Order: 14
 

@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage12.jpg
 Chapter Title: Stop Guessing, Start Mapping
 Order: 12
 

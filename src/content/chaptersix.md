@@ -1,5 +1,4 @@
 Part: Part I: FOUNDATIONS
-KeyImage: https://example.com/keyimage6.jpg
 Chapter Title: Emotional vs. Functional
 Order: 06
 

@@ -1,5 +1,4 @@
 Part: Part V: PRESSURING
-KeyImage: https://example.com/keyimage26.jpg
 Chapter Title: Strategic Flexibility
 Order: 26
 

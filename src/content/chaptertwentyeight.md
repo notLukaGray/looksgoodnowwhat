@@ -1,5 +1,4 @@
 Part: Part V: PRESSURING
-KeyImage: https://example.com/keyimage28.jpg
 Chapter Title: Strategy vs. Style
 Order: 28
 

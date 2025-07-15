@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage8.jpg
 Chapter Title: Naming: Methods, Mistakes, & Meaning
 Order: 08
 

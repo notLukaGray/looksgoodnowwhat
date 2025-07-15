@@ -1,5 +1,4 @@
 Part: Part V: PRESSURING
-KeyImage: https://example.com/keyimage27.jpg
 Chapter Title: Creative Compromise
 Order: 27
 

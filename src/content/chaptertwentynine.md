@@ -1,5 +1,4 @@
 Part: Part V: PRESSURING
-KeyImage: https://example.com/keyimage29.jpg
 Chapter Title: Good/Fast/Cheap
 Order: 29
 

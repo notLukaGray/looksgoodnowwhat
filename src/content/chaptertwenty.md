@@ -1,5 +1,4 @@
 Part: Part III: TURNING
-KeyImage: https://example.com/keyimage20.jpg
 Chapter Title: Prototyping to Learn, Not Prove
 Order: 20
 

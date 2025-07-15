@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage10.jpg
 Chapter Title: Conceptual Coherence
 Order: 10
 

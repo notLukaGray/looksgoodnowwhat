@@ -1,5 +1,4 @@
 Part: Part IV: SELLING
-KeyImage: https://example.com/keyimage24.jpg
 Chapter Title: Anti-Frameworks: How Models Break
 Order: 24
 

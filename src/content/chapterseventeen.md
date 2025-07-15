@@ -1,5 +1,4 @@
 Part: Part III: TURNING
-KeyImage: https://example.com/keyimage17.jpg
 Chapter Title: Brief to Breakthrough
 Order: 17
 

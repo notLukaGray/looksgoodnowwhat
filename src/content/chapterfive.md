@@ -1,5 +1,4 @@
 Part: Part I: FOUNDATIONS
-KeyImage: https://example.com/keyimage5.jpg
 Chapter Title: Reading the Room
 Order: 05
 

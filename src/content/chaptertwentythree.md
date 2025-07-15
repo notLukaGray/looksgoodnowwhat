@@ -1,5 +1,4 @@
 Part: Part IV: SELLING
-KeyImage: https://example.com/keyimage23.jpg
 Chapter Title: The Negotiation Lab
 Order: 23
 

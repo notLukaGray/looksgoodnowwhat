@@ -1,5 +1,4 @@
 Part: Part II: BUILDING
-KeyImage: https://example.com/keyimage9.jpg
 Chapter Title: The Role of Language & Tone
 Order: 09
 

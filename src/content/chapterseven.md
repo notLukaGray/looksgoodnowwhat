@@ -1,5 +1,4 @@
 Part: Part I: FOUNDATIONS
-KeyImage: https://example.com/keyimage7.jpg
 Chapter Title: Differentiation & Distinction
 Order: 07
 
