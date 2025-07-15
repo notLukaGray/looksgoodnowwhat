@@ -4,10 +4,10 @@ export const metadata = {
   title: 'Table of Contents - Looks Good, Now What',
   description: 'All chapters in "Looks Good, Now What" for search engines.',
   robots: {
-    index: true,
+    index: false,
     follow: true,
     googleBot: {
-      index: true,
+      index: false,
       follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',

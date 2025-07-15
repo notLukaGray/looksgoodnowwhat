@@ -17,13 +17,16 @@ export default async function NotFound() {
   const chapters = getAllChapters();
 
   // Group chapters by part
-  const groupedChapters = chapters.reduce((acc, chapter) => {
-    if (!acc[chapter.part]) {
-      acc[chapter.part] = [];
-    }
-    acc[chapter.part].push(chapter);
-    return acc;
-  }, {} as Record<string, typeof chapters>);
+  const groupedChapters = chapters.reduce(
+    (acc, chapter) => {
+      if (!acc[chapter.part]) {
+        acc[chapter.part] = [];
+      }
+      acc[chapter.part].push(chapter);
+      return acc;
+    },
+    {} as Record<string, typeof chapters>
+  );
 
   // Define part order
   const partOrder = [
@@ -55,7 +58,10 @@ export default async function NotFound() {
         </div>
 
         {}
-        <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0" style={{ paddingBottom: '200px' }}>
+        <div
+          className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0"
+          style={{ paddingBottom: '200px' }}
+        >
           {}
           <div style={{ height: '100px' }} />
 
@@ -66,7 +72,8 @@ export default async function NotFound() {
                 Page Not Found
               </h1>
               <p className="text-lg text-gray-600 mb-8">
-                The page you are looking for doesn&apos;t exist or has been moved.
+                The page you are looking for doesn&apos;t exist or has been
+                moved.
               </p>
 
               <div className="space-y-4">
@@ -78,7 +85,9 @@ export default async function NotFound() {
                 </Link>
 
                 <div className="text-sm text-gray-500 mt-8">
-                  <p className="mb-4">You might want to try one of these chapters:</p>
+                  <p className="mb-4">
+                    You might want to try one of these chapters:
+                  </p>
                   <div className="space-y-6">
                     {partOrder
                       .filter(part => groupedChapters[part])
@@ -94,7 +103,9 @@ export default async function NotFound() {
                                   href={`/${chapter.slug}`}
                                   className="text-gray-800 hover:text-[#b95b23] hover:underline text-sm"
                                 >
-                                  {chapter.chapterTitle || chapter.chapter || chapter.slug}
+                                  {chapter.chapterTitle ||
+                                    chapter.chapter ||
+                                    chapter.slug}
                                 </Link>
                               </div>
                             ))}
