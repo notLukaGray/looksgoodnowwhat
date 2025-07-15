@@ -13,7 +13,6 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
   const [duration, setDuration] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
-  const [audioLoaded, setAudioLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const eventListenersRef = useRef<{
@@ -36,16 +35,31 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
         audioRef.current.src = '';
-        
+
         // Remove event listeners
         if (eventListenersRef.current) {
-          audioRef.current.removeEventListener('timeupdate', eventListenersRef.current.updateTime);
-          audioRef.current.removeEventListener('loadedmetadata', eventListenersRef.current.updateDuration);
-          audioRef.current.removeEventListener('ended', eventListenersRef.current.handleEnded);
-          audioRef.current.removeEventListener('error', eventListenersRef.current.handleError);
-          audioRef.current.removeEventListener('loadstart', eventListenersRef.current.handleLoadStart);
+          audioRef.current.removeEventListener(
+            'timeupdate',
+            eventListenersRef.current.updateTime
+          );
+          audioRef.current.removeEventListener(
+            'loadedmetadata',
+            eventListenersRef.current.updateDuration
+          );
+          audioRef.current.removeEventListener(
+            'ended',
+            eventListenersRef.current.handleEnded
+          );
+          audioRef.current.removeEventListener(
+            'error',
+            eventListenersRef.current.handleError
+          );
+          audioRef.current.removeEventListener(
+            'loadstart',
+            eventListenersRef.current.handleLoadStart
+          );
         }
-        
+
         // Reset refs
         audioRef.current = null;
         eventListenersRef.current = null;
@@ -67,10 +81,9 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
     setIsPlaying(false);
     setCurrentTime(0);
     setDuration(0);
-    setAudioLoaded(false);
     setExpanded(false);
     setError(null);
-    
+
     // Clean up existing audio element
     cleanupAudio();
   }, [src]);
@@ -87,39 +100,36 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
             setCurrentTime(audioRef.current.currentTime);
           }
         };
-        
+
         const updateDuration = () => {
           if (audioRef.current) {
             setDuration(audioRef.current.duration);
-            setAudioLoaded(true);
             setError(null);
           }
         };
-        
+
         const handleEnded = () => {
           setIsPlaying(false);
           setCurrentTime(0);
         };
-        
+
         const handleError = (e: Event) => {
           console.error('Audio error:', e);
           setError('Failed to load audio');
           setIsPlaying(false);
-          setAudioLoaded(false);
         };
-        
+
         const handleLoadStart = () => {
           setError(null);
-          setAudioLoaded(false);
         };
 
         // Store event listeners for cleanup
-        eventListenersRef.current = { 
-          updateTime, 
-          updateDuration, 
-          handleEnded, 
-          handleError, 
-          handleLoadStart 
+        eventListenersRef.current = {
+          updateTime,
+          updateDuration,
+          handleEnded,
+          handleError,
+          handleLoadStart,
         };
 
         audioRef.current.addEventListener('timeupdate', updateTime);
@@ -158,7 +168,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
       } else {
         // Reset error state when attempting to play
         setError(null);
-        
+
         // Try to play audio
         await audioRef.current.play();
         setIsPlaying(true);
