@@ -93,7 +93,7 @@ export const getNavItems = cache((): NavItem[] => {
       }
       acc[chapter.part].push({
         slug: chapter.slug,
-        title: chapter.chapterTitle,
+        title: chapter.chapterTitle || chapter.chapter, // Use chapterTitle if available, otherwise fall back to chapter
         order: chapter.order,
       });
       return acc;

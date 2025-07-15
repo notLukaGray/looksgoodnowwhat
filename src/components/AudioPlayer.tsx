@@ -14,28 +14,123 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
   const [expanded, setExpanded] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [audioLoaded, setAudioLoaded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const eventListenersRef = useRef<{
+    updateTime: () => void;
+    updateDuration: () => void;
+    handleEnded: () => void;
+    handleError: (e: Event) => void;
+    handleLoadStart: () => void;
+  } | null>(null);
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
+  // Cleanup function to properly dispose of audio element
+  const cleanupAudio = () => {
+    if (audioRef.current) {
+      try {
+        // Pause and reset audio
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current.src = '';
+        
+        // Remove event listeners
+        if (eventListenersRef.current) {
+          audioRef.current.removeEventListener('timeupdate', eventListenersRef.current.updateTime);
+          audioRef.current.removeEventListener('loadedmetadata', eventListenersRef.current.updateDuration);
+          audioRef.current.removeEventListener('ended', eventListenersRef.current.handleEnded);
+          audioRef.current.removeEventListener('error', eventListenersRef.current.handleError);
+          audioRef.current.removeEventListener('loadstart', eventListenersRef.current.handleLoadStart);
+        }
+        
+        // Reset refs
+        audioRef.current = null;
+        eventListenersRef.current = null;
+      } catch (err) {
+        console.warn('Error during audio cleanup:', err);
+      }
+    }
+  };
+
+  // Cleanup effect to pause audio and remove event listeners when component unmounts
+  useEffect(() => {
+    return () => {
+      cleanupAudio();
+    };
+  }, []); // Remove isPlaying dependency to ensure cleanup always runs
+
+  // Reset state when src changes
+  useEffect(() => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    setAudioLoaded(false);
+    setExpanded(false);
+    setError(null);
+    
+    // Clean up existing audio element
+    cleanupAudio();
+  }, [src]);
+
   // Create audio element only when first needed
   const ensureAudioElement = () => {
     if (!audioRef.current && src) {
-      audioRef.current = new Audio(src);
-      audioRef.current.preload = 'metadata';
+      try {
+        audioRef.current = new Audio(src);
+        audioRef.current.preload = 'metadata';
 
-      const updateTime = () => setCurrentTime(audioRef.current!.currentTime);
-      const updateDuration = () => {
-        setDuration(audioRef.current!.duration);
-        setAudioLoaded(true);
-      };
-      const handleEnded = () => setIsPlaying(false);
+        const updateTime = () => {
+          if (audioRef.current) {
+            setCurrentTime(audioRef.current.currentTime);
+          }
+        };
+        
+        const updateDuration = () => {
+          if (audioRef.current) {
+            setDuration(audioRef.current.duration);
+            setAudioLoaded(true);
+            setError(null);
+          }
+        };
+        
+        const handleEnded = () => {
+          setIsPlaying(false);
+          setCurrentTime(0);
+        };
+        
+        const handleError = (e: Event) => {
+          console.error('Audio error:', e);
+          setError('Failed to load audio');
+          setIsPlaying(false);
+          setAudioLoaded(false);
+        };
+        
+        const handleLoadStart = () => {
+          setError(null);
+          setAudioLoaded(false);
+        };
 
-      audioRef.current.addEventListener('timeupdate', updateTime);
-      audioRef.current.addEventListener('loadedmetadata', updateDuration);
-      audioRef.current.addEventListener('ended', handleEnded);
+        // Store event listeners for cleanup
+        eventListenersRef.current = { 
+          updateTime, 
+          updateDuration, 
+          handleEnded, 
+          handleError, 
+          handleLoadStart 
+        };
+
+        audioRef.current.addEventListener('timeupdate', updateTime);
+        audioRef.current.addEventListener('loadedmetadata', updateDuration);
+        audioRef.current.addEventListener('ended', handleEnded);
+        audioRef.current.addEventListener('error', handleError);
+        audioRef.current.addEventListener('loadstart', handleLoadStart);
+      } catch (err) {
+        console.error('Error creating audio element:', err);
+        setError('Failed to create audio player');
+      }
     }
   };
 
@@ -45,32 +140,50 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
     setExpanded(isPlaying);
   }, [hasMounted, isPlaying]);
 
-  const handlePlayClick = () => {
+  const handlePlayClick = async () => {
     if (!src) return;
 
-    // Create audio element on first play
-    ensureAudioElement();
+    try {
+      // Create audio element on first play
+      ensureAudioElement();
 
-    if (!audioRef.current) return;
+      if (!audioRef.current) {
+        setError('Audio player not available');
+        return;
+      }
 
-    if (isPlaying) {
-      audioRef.current.pause();
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        // Reset error state when attempting to play
+        setError(null);
+        
+        // Try to play audio
+        await audioRef.current.play();
+        setIsPlaying(true);
+      }
+    } catch (err) {
+      console.error('Error playing audio:', err);
+      setError('Failed to play audio');
       setIsPlaying(false);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(true);
     }
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const time = parseFloat(e.target.value);
-    if (audioRef.current) {
-      audioRef.current.currentTime = time;
-      setCurrentTime(time);
+    if (audioRef.current && !isNaN(time)) {
+      try {
+        audioRef.current.currentTime = time;
+        setCurrentTime(time);
+      } catch (err) {
+        console.warn('Error seeking audio:', err);
+      }
     }
   };
 
   const formatTime = (time: number) => {
+    if (isNaN(time) || time < 0) return '0:00';
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
@@ -82,6 +195,22 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         className={`bg-gray-100 rounded-lg p-4 text-center text-gray-500 ${className}`}
       >
         No audio file provided
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div
+        className={`bg-red-50 border border-red-200 rounded-lg p-4 text-center text-red-600 ${className}`}
+      >
+        <div className="text-sm font-medium">{error}</div>
+        <button
+          onClick={handlePlayClick}
+          className="mt-2 px-3 py-1 bg-red-100 text-red-700 rounded text-sm hover:bg-red-200 transition-colors"
+        >
+          Retry
+        </button>
       </div>
     );
   }
@@ -137,6 +266,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
             transition: 'margin-right 1s cubic-bezier(0.4,0,0.2,1)',
           }}
           aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
+          disabled={!src}
         >
           {isPlaying ? (
             <svg width="28" height="28" fill="currentColor" viewBox="0 0 20 20">
@@ -149,7 +279,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
             </svg>
           )}
         </button>
-        {expanded && audioLoaded && (
+        {expanded && (
           <>
             <span
               style={{
@@ -179,6 +309,8 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
                 height: 4,
                 marginRight: 4,
                 minWidth: 0,
+                WebkitAppearance: 'none',
+                appearance: 'none',
               }}
             />
             <span

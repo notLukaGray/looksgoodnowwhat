@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Luka Gray',
@@ -52,22 +53,23 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
-        {}
-        <div
-          className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-visible"
-          style={{
-            backgroundImage: `url(/profile_photo.jpg)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 30%',
-            backgroundRepeat: 'no-repeat',
-            width: '100%',
-            height: '100%',
-            minHeight: '25vh',
-            minWidth: 0,
-          }}
-        ></div>
+        {/* Background Image Section */}
+        <div className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-hidden" style={{ backgroundColor: '#dfdfdf' }}>
+          <Image
+            src="/profile_photo.jpg"
+            alt="About Luka Gray"
+            fill
+            sizes="(max-width: 1024px) 20vw, 40vw"
+            className="object-cover object-center"
+            style={{ objectPosition: 'center 30%' }}
+            priority={false}
+            quality={85}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
+          />
+        </div>
 
-        {}
+        {/* Content Section */}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
             <h1>About The Author</h1>
@@ -252,7 +254,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {}
+      {/* Script for schema.org */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

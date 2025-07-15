@@ -11,6 +11,8 @@ const lora = Lora({
   variable: '--font-serif',
   weight: ['400', '700'],
   display: 'swap',
+  preload: true,
+  fallback: ['Georgia', 'serif'],
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -18,6 +20,8 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: '--font-mono',
   weight: ['400', '700'],
   display: 'swap',
+  preload: true,
+  fallback: ['Courier', 'monospace'],
 });
 
 const inter = Inter({
@@ -25,6 +29,8 @@ const inter = Inter({
   variable: '--font-sans',
   weight: ['400', '700', '900'],
   display: 'swap',
+  preload: true,
+  fallback: ['Arial', 'sans-serif'],
 });
 
 export const metadata = {
@@ -108,6 +114,21 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+
+        {}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://free-images.com" />
+
+        {}
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://free-images.com" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import dynamic from 'next/dynamic';
 import rehypeRaw from 'rehype-raw';
+
+// Dynamically import ReactMarkdown to reduce initial bundle size
+const ReactMarkdown = dynamic(() => import('react-markdown'), {
+  loading: () => <div className="animate-pulse">Loading content...</div>,
+  ssr: true,
+});
 
 // Helper function to generate anchor ID from heading text
 function generateAnchorId(text: string): string {
