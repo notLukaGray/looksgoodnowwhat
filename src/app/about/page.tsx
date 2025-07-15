@@ -54,7 +54,10 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
         {/* Background Image Section */}
-        <div className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-hidden" style={{ backgroundColor: '#dfdfdf' }}>
+        <div
+          className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-hidden"
+          style={{ backgroundColor: '#dfdfdf' }}
+        >
           <Image
             src="/profile_photo.jpg"
             alt="About Luka Gray"

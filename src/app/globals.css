@@ -22,7 +22,9 @@
 
 html {
   font-size: 16px;
-  font-feature-settings: 'kern' 1, 'onum' 1;
+  font-feature-settings:
+    'kern' 1,
+    'onum' 1;
   font-kerning: normal;
 }
 
