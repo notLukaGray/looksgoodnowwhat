@@ -53,7 +53,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
-        {/* Background Image Section */}
+        {}
         <div
           className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-hidden"
           style={{ backgroundColor: '#dfdfdf' }}
@@ -72,7 +72,7 @@ export default function AboutPage() {
           />
         </div>
 
-        {/* Content Section */}
+        {}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
             <h1>About The Author</h1>
@@ -87,23 +87,24 @@ export default function AboutPage() {
             <div style={{ height: '20px' }}></div>
 
             <p>
-              I picked up my design fundamentals at Fort Hays State University,
-              then learned how brands really behave by building them in the
-              field. Since then I&apos;ve shaped work for Samsung, Kellogg,
-              Bridgestone, Dunkin&apos;, Miller-Coors, Altria, Echo, and the
-              United Nations, aligning consumer insight, business need, and
-              disciplined design practice.
+              I acquired my design fundamentals at Fort Hays State University,
+              and then learned how brands truly behave by building them in the
+              field. Since then, I&apos;ve developed work for prominent clients
+              such as Samsung, Kellogg, Bridgestone, Dunkin&apos;, Miller-Coors,
+              Altria, Echo, and the United Nations, aligning consumer insights,
+              business needs, and disciplined design practices.
             </p>
 
             <div style={{ height: '20px' }}></div>
 
             <p>
-              For the past several years I&apos;ve lectured at the University of
-              Nebraska–Lincoln and traveled to colleges across the Midwest,
+              For the past several years, I&apos;ve lectured at the University
+              of Nebraska–Lincoln and traveled to colleges across the Midwest,
               challenging students to tie every creative decision to a clear
               strategic purpose. Whether the brief calls for packaging,
-              short-form film, or an interactive prototype, the goal stays the
-              same: make work that earns its place by solving a real problem.
+              short-form film, or an interactive prototype, the goal remains the
+              same: to create work that earns its place by solving a real
+              problem.
             </p>
 
             <div style={{ height: '20px' }}></div>
@@ -132,9 +133,8 @@ export default function AboutPage() {
 
             <p>
               Treat these pages like studio time with a mentor, not a lecture
-              hall. Read, try, question, repeat. This is how I see our field;
-              take what works, leave what doesn&apos;t, and build your own
-              approach.
+              hall. Read, try, question, repeat. This is how I see our field:
+              take what works, leave what doesn&apos;t, and build your approach.
             </p>
 
             <div style={{ height: '20px' }}></div>
@@ -160,7 +160,7 @@ export default function AboutPage() {
                 <strong>
                   <em>The Design of Everyday Things</em>
                 </strong>{' '}
-                by Don Norman – User centred design basics.
+                by Don Norman – User-centred design basics.
               </li>
               <li>
                 <strong>
@@ -209,7 +209,8 @@ export default function AboutPage() {
                 <strong>
                   <em>Sprint</em>
                 </strong>{' '}
-                by Jake Knapp – Five day framework for solving product problems.
+                by Jake Knapp – A five-day framework for solving product
+                problems.
               </li>
               <li>
                 <strong>
@@ -242,7 +243,7 @@ export default function AboutPage() {
                 <strong>
                   <em>The Politics of Design</em>
                 </strong>{' '}
-                by Ruben Pater – Spotting bias in colour, type and imagery.
+                by Ruben Pater – Spotting bias in colour, type, and imagery.
               </li>
               <li>
                 <strong>
@@ -257,7 +258,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Script for schema.org */}
+      {}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

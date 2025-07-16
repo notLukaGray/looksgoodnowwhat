@@ -10,10 +10,10 @@ AudioFile: /vo/chaptertwo-audio.mp3
 
 # Framing: What Are We Solving?
 
-<div class="quote-text" style="color:#666; font-size: 1rem; max-width: 34rem; text-align: left;">
+<div class="quote-text" style="color:#666; font-size: 1rem; max-width: 100%; text-align: left;">
   "Simplicity is about subtracting the obvious and adding the meaningful."
 </div>
-<div class="quote-publisher" style="color:#666; font-size: 1rem; max-width: 34rem;">
+<div class="quote-publisher" style="color:#666; font-size: 1rem; max-width: 100%;">
   John Maeda
 </div>
 <div style="height: 40px;"></div>
