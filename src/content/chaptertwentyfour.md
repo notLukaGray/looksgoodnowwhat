@@ -1,5 +1,5 @@
 Part: Part IV: SELLING
-Chapter Title: Anti-Frameworks: How Models Break
+Chapter: Anti-Frameworks: How Models Break
 Order: 24
 
 ---

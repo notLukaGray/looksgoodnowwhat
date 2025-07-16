@@ -1,5 +1,5 @@
 Part: Part I: FOUNDATIONS
-Chapter Title: Positioning That Means Something
+Chapter: Positioning That Means Something
 Order: 04
 
 ---

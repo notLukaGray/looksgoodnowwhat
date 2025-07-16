@@ -1,5 +1,5 @@
 Part: Part V: PRESSURING
-Chapter Title: Strategic Flexibility
+Chapter: Strategic Flexibility
 Order: 26
 
 ---

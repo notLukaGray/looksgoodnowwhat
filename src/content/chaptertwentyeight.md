@@ -1,5 +1,5 @@
 Part: Part V: PRESSURING
-Chapter Title: Strategy vs. Style
+Chapter: Strategy vs. Style
 Order: 28
 
 ---

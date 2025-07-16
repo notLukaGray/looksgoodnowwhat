@@ -1,5 +1,5 @@
 Part: Part IV: SELLING
-Chapter Title: Deck-Building Workshop
+Chapter: Deck-Building Workshop
 Order: 22
 
 ---

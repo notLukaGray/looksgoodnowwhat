@@ -4,23 +4,23 @@ import { useState } from 'react';
 import { siteConfig } from '../lib/config';
 
 interface ShareButtonProps {
-  chapterTitle: string;
+  chapter: string;
   chapterSlug: string;
 }
 
 export default function ShareButton({
-  chapterTitle,
+  chapter,
   chapterSlug,
 }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
   const shareUrl = `${siteConfig.shortDomain}/${chapterSlug}`;
-  const shareText = `Check out "${chapterTitle}" from "Looks Good, Now What" by Luka Gray`;
+  const shareText = `Check out "${chapter}" from "Looks Good, Now What" by Luka Gray`;
 
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: chapterTitle,
+          title: chapter,
           text: shareText,
           url: shareUrl,
         });

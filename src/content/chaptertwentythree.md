@@ -1,5 +1,5 @@
 Part: Part IV: SELLING
-Chapter Title: The Negotiation Lab
+Chapter: The Negotiation Lab
 Order: 23
 
 ---

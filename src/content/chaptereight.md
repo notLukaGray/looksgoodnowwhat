@@ -1,5 +1,5 @@
 Part: Part II: BUILDING
-Chapter Title: Naming: Methods, Mistakes, & Meaning
+Chapter: Naming: Methods, Mistakes, & Meaning
 Order: 08
 
 ---

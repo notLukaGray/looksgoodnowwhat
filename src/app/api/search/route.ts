@@ -32,12 +32,12 @@ export async function GET(request: NextRequest) {
     const results = chapters
       .filter(chapter => {
         const searchText =
-          `${chapter.chapterTitle} ${chapter.content}`.toLowerCase();
+          `${chapter.chapter} ${chapter.content}`.toLowerCase();
         return searchText.includes(query.toLowerCase());
       })
       .map(chapter => ({
         slug: chapter.slug,
-        title: chapter.chapterTitle,
+        title: chapter.chapter,
         excerpt: chapter.content.substring(0, 200) + '...',
       }))
       .slice(0, limit);

@@ -103,9 +103,7 @@ export default async function NotFound() {
                                   href={`/${chapter.slug}`}
                                   className="text-gray-800 hover:text-[#b95b23] hover:underline text-sm"
                                 >
-                                  {chapter.chapterTitle ||
-                                    chapter.chapter ||
-                                    chapter.slug}
+                                  {chapter.chapter || chapter.slug}
                                 </Link>
                               </div>
                             ))}

@@ -1,5 +1,5 @@
 Part: Part IV: SELLING
-Chapter Title: Creative or Confused
+Chapter: Creative or Confused
 Order: 25
 
 ---

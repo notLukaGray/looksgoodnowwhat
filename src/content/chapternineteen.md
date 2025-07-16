@@ -1,5 +1,5 @@
 Part: Part III: TURNING
-Chapter Title: The Minimum Lovable Concept
+Chapter: The Minimum Lovable Concept
 Order: 19
 
 ---

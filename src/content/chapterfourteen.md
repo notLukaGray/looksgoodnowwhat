@@ -1,5 +1,5 @@
 Part: Part II: BUILDING
-Chapter Title: Strategy as a Constraint
+Chapter: Strategy as a Constraint
 Order: 14
 
 ---

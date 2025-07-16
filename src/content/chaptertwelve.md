@@ -1,5 +1,5 @@
 Part: Part II: BUILDING
-Chapter Title: Stop Guessing, Start Mapping
+Chapter: Stop Guessing, Start Mapping
 Order: 12
 
 ---

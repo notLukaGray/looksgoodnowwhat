@@ -20,8 +20,8 @@ export async function GET() {
       .map(
         chapter => `
     <item>
-      <title>Chapter ${chapter.order}: ${chapter.chapterTitle}</title>
-      <description>Chapter ${chapter.order}: ${chapter.chapterTitle} - Strategic design thinking insights for students and educators.</description>
+      <title>Chapter ${chapter.order}: ${chapter.chapter}</title>
+      <description>Chapter ${chapter.order}: ${chapter.chapter} - Strategic design thinking insights for students and educators.</description>
       <link>${baseUrl}/${chapter.slug}</link>
       <guid>${baseUrl}/${chapter.slug}</guid>
       <pubDate>2024-01-01T00:00:00Z</pubDate>

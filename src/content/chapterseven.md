@@ -1,5 +1,5 @@
 Part: Part I: FOUNDATIONS
-Chapter Title: Differentiation & Distinction
+Chapter: Differentiation & Distinction
 Order: 07
 
 ---

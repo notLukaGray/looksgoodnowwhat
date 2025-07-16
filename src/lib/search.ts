@@ -35,18 +35,15 @@ export function createSearchIndex(): SearchIndex {
 
   chapters.forEach(chapter => {
     // Parse the content into sections based on headings
-    const sections = parseChapterSections(
-      chapter.content,
-      chapter.chapterTitle
-    );
+    const sections = parseChapterSections(chapter.content, chapter.chapter);
 
     sections.forEach(section => {
-      const searchableText = `${chapter.chapterTitle} ${section.heading} ${section.content}`;
+      const searchableText = `${chapter.chapter} ${section.heading} ${section.content}`;
 
       const result: SearchResult = {
         id: indexId.toString(),
         slug: chapter.slug,
-        title: chapter.chapterTitle,
+        title: chapter.chapter,
         part: chapter.part,
         chapter: chapter.chapter,
         excerpt: createExcerpt(section.content, 200),
@@ -68,7 +65,7 @@ export function createSearchIndex(): SearchIndex {
 // Parse chapter content into sections based on headings
 function parseChapterSections(
   content: string,
-  chapterTitle: string
+  chapterHeading: string
 ): Array<{
   heading: string;
   content: string;
@@ -81,7 +78,7 @@ function parseChapterSections(
     anchorId: string;
   }> = [];
 
-  let currentHeading = chapterTitle;
+  let currentHeading = chapterHeading;
   let currentContent: string[] = [];
   let currentAnchorId = '';
 
@@ -133,9 +130,9 @@ function parseChapterSections(
   // If no sections were found, create one section with the entire content
   if (sections.length === 0) {
     sections.push({
-      heading: chapterTitle,
+      heading: chapterHeading,
       content: content,
-      anchorId: createAnchorId(chapterTitle),
+      anchorId: createAnchorId(chapterHeading),
     });
   }
 

@@ -1,5 +1,5 @@
 Part: Part II: BUILDING
-Chapter Title: Conceptual Coherence
+Chapter: Conceptual Coherence
 Order: 10
 
 ---

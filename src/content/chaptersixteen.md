@@ -1,5 +1,5 @@
 Part: Part III: TURNING
-Chapter Title: Making the Invisible Visible
+Chapter: Making the Invisible Visible
 Order: 16
 
 ---

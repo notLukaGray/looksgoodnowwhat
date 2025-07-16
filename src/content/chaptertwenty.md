@@ -1,5 +1,5 @@
 Part: Part III: TURNING
-Chapter Title: Prototyping to Learn, Not Prove
+Chapter: Prototyping to Learn, Not Prove
 Order: 20
 
 ---

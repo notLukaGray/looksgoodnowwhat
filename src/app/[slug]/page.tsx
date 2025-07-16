@@ -2,6 +2,8 @@ import React from 'react';
 import { getAllChapters, getAllChapterSlugs } from '../../lib/chapters';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
+import { generateKeywordsForChapter } from '../../lib/keywords';
+import { generateStructuredBreadcrumbs } from '../../lib/breadcrumbs';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -60,23 +62,19 @@ export async function generateMetadata({
     };
   }
 
+  // Generate dynamic keywords
+  const keywords = chapter.keywords || generateKeywordsForChapter(chapter);
+
   return {
-    title: chapter.chapterTitle,
-    description: `Chapter ${chapter.order}: ${chapter.chapterTitle} - Strategic design thinking insights for students and educators.`,
-    keywords: [
-      'design thinking',
-      'strategic design',
-      chapter.chapterTitle.toLowerCase(),
-      'design education',
-      'creative process',
-      'design strategy',
-    ],
+    title: chapter.chapter,
+    description: `Chapter ${chapter.order}: ${chapter.chapter} - Strategic design thinking insights for students and educators.`,
+    keywords: keywords,
     authors: [{ name: 'Luka Gray' }],
     creator: 'Luka Gray',
     publisher: 'Luka Gray',
     openGraph: {
-      title: chapter.chapterTitle,
-      description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+      title: chapter.chapter,
+      description: `Chapter ${chapter.order}: ${chapter.chapter}`,
       url: `${siteConfig.primaryDomain}/${slug}`,
       type: 'article',
       images: [
@@ -84,7 +82,7 @@ export async function generateMetadata({
           url: chapter.keyImage || '/apple-touch-icon.png',
           width: 1200,
           height: 630,
-          alt: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+          alt: `Chapter ${chapter.order}: ${chapter.chapter}`,
         },
       ],
       publishedTime: '2024-01-01',
@@ -131,6 +129,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const nextChapter =
     currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
 
+  // Generate dynamic breadcrumbs
+  const breadcrumbs = generateStructuredBreadcrumbs(chapter);
+
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
@@ -142,7 +143,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           {chapter.keyImage && (
             <Image
               src={chapter.keyImage}
-              alt={`${chapter.chapterTitle} background`}
+              alt={`${chapter.chapter} background`}
               fill
               sizes="(max-width: 1024px) 20vw, 40vw"
               className="object-cover"
@@ -152,7 +153,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
           )}
-          <ShareButton chapterTitle={chapter.chapterTitle} chapterSlug={slug} />
+          <ShareButton chapter={chapter.chapter} chapterSlug={slug} />
         </div>
 
         {/* Content Section */}
@@ -227,8 +228,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             {
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: chapter.chapterTitle,
-              description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+              headline: chapter.chapter,
+              description: `Chapter ${chapter.order}: ${chapter.chapter}`,
               author: {
                 '@type': 'Person',
                 name: 'Luka Gray',
@@ -258,8 +259,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             {
               '@context': 'https://schema.org',
               '@type': 'Chapter',
-              name: chapter.chapterTitle,
-              description: `Chapter ${chapter.order}: ${chapter.chapterTitle}`,
+              name: chapter.chapter,
+              description: `Chapter ${chapter.order}: ${chapter.chapter}`,
               position: chapter.order,
               isPartOf: {
                 '@type': 'Book',
@@ -271,28 +272,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               },
               url: `${siteConfig.primaryDomain}/${slug}`,
             },
-            {
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  item: {
-                    '@id': siteConfig.primaryDomain,
-                    name: 'Home',
-                  },
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  item: {
-                    '@id': `${siteConfig.primaryDomain}/${slug}`,
-                    name: chapter.chapterTitle,
-                  },
-                },
-              ],
-            },
+            breadcrumbs,
           ]),
         }}
       />

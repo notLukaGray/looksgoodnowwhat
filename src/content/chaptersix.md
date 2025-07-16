@@ -1,5 +1,5 @@
 Part: Part I: FOUNDATIONS
-Chapter Title: Emotional vs. Functional
+Chapter: Emotional vs. Functional
 Order: 06
 
 ---

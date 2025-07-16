@@ -1,5 +1,5 @@
 Part: Part I: FOUNDATIONS
-Chapter Title: Reading the Room
+Chapter: Reading the Room
 Order: 05
 
 ---

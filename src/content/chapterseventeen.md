@@ -1,5 +1,5 @@
 Part: Part III: TURNING
-Chapter Title: Brief to Breakthrough
+Chapter: Brief to Breakthrough
 Order: 17
 
 ---

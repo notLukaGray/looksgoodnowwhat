@@ -7,9 +7,9 @@ function parseChapterMarkdown(md: string) {
   const partMatch = md.match(/Part: ([^\n]+)/);
   const keyImageMatch = md.match(/KeyImage: ([^\n]+)/);
   const chapterMatch = md.match(/Chapter: ([^\n]+)/);
-  const chapterTitleMatch = md.match(/Chapter Title: ([^\n]+)/);
   const quoteMatch = md.match(/Quote: ([^\n]+)/);
   const quoteAuthorMatch = md.match(/Quote Author: ([^\n]+)/);
+  const keywordsMatch = md.match(/Keywords: ([^\n]+)/);
   const orderMatch = md.match(/Order: (\d+)/);
   const audioFileMatch = md.match(/AudioFile: ([^\n]+)/);
   const audioTextMatch = md.match(/AudioText: ([^\n]+)/);
@@ -19,9 +19,11 @@ function parseChapterMarkdown(md: string) {
     part: partMatch ? partMatch[1].trim() : '',
     keyImage: keyImageMatch ? keyImageMatch[1].trim() : '',
     chapter: chapterMatch ? chapterMatch[1].trim() : '',
-    chapterTitle: chapterTitleMatch ? chapterTitleMatch[1].trim() : '',
     quote: quoteMatch ? quoteMatch[1].trim() : '',
     quoteAuthor: quoteAuthorMatch ? quoteAuthorMatch[1].trim() : '',
+    keywords: keywordsMatch
+      ? keywordsMatch[1].split(',').map(k => k.trim())
+      : undefined,
     order: orderMatch ? parseInt(orderMatch[1]) : 999,
     audioFile: audioFileMatch ? audioFileMatch[1].trim() : '',
     audioText: audioTextMatch ? audioTextMatch[1].trim() : '',
@@ -34,13 +36,13 @@ export interface Chapter {
   part: string;
   keyImage: string;
   chapter: string;
-  chapterTitle: string;
   quote: string;
   quoteAuthor: string;
   order: number;
   audioFile: string;
   audioText: string;
   content: string;
+  keywords?: string[]; // Optional custom keywords to override automatic extraction
 }
 
 export interface NavItem {
@@ -93,7 +95,7 @@ export const getNavItems = cache((): NavItem[] => {
       }
       acc[chapter.part].push({
         slug: chapter.slug,
-        title: chapter.chapterTitle || chapter.chapter, // Use chapterTitle if available, otherwise fall back to chapter
+        title: chapter.chapter,
         order: chapter.order,
       });
       return acc;

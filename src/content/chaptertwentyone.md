@@ -1,5 +1,5 @@
 Part: Part III: TURNING
-Chapter Title: Case Study Thinking
+Chapter: Case Study Thinking
 Order: 21
 
 ---

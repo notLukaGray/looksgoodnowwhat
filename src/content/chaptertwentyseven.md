@@ -1,5 +1,5 @@
 Part: Part V: PRESSURING
-Chapter Title: Creative Compromise
+Chapter: Creative Compromise
 Order: 27
 
 ---

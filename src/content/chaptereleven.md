@@ -1,5 +1,5 @@
 Part: Part II: BUILDING
-Chapter Title: Descriptive vs. Suggestive Thinking
+Chapter: Descriptive vs. Suggestive Thinking
 Order: 11
 
 ---
