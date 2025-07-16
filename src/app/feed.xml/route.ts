@@ -46,6 +46,45 @@ const chapterDescriptions: Record<string, string> = {
   chapterthirty: `Strategies for navigating uncertainty, making decisions with limited information, and moving forward when the path isn’t clear.`,
 };
 
+// Map of chapter slugs to categories
+const chapterCategories: Record<string, string[]> = {
+  introduction: ['Design Thinking', 'Creative Strategy', 'Book Introduction'],
+  chapterone: ['Creative Theory', 'Design Foundations', 'Design Thinking'],
+  chaptertwo: ['Problem Framing', 'Briefs', 'Design Process'],
+  chapterthree: ['Design Rationale', 'Persuasion', 'Critique'],
+  chapterfour: ['Positioning', 'Brand Strategy', 'Market Analysis'],
+  chapterfive: ['Semiotics', 'Cultural Context', 'Visual Communication'],
+  chaptersix: ['Emotional Design', 'Functional Design', 'User Experience'],
+  chapterseven: ['Differentiation', 'Brand Identity', 'Competitive Analysis'],
+  chaptereight: ['Naming', 'Brand Strategy', 'Naming Process'],
+  chapternine: ['Language', 'Tone of Voice', 'Brand Communication'],
+  chapterten: ['Concept Development', 'Consistency', 'Design Systems'],
+  chaptereleven: ['Communication', 'Messaging', 'Brand Storytelling'],
+  chaptertwelve: ['Visual Logic', 'Information Architecture', 'Usability'],
+  chapterthirteen: ['Creative Process', 'Ideation', 'Collaboration'],
+  chapterfourteen: ['Strategy', 'Constraints', 'Creative Limits'],
+  chapterfifteen: ['Concept Development', 'Execution', 'Project Delivery'],
+  chaptersixteen: ['Research', 'Insight', 'Discovery'],
+  chapterseventeen: ['Briefs', 'Ideation', 'Creative Breakthroughs'],
+  chaptereighteen: ['Evidence-Based Design', 'Research', 'Testing'],
+  chapternineteen: ['MVP', 'Product Design', 'Prioritization'],
+  chaptertwenty: ['Prototyping', 'Iteration', 'Learning'],
+  chaptertwentyone: ['Case Studies', 'Documentation', 'Reflection'],
+  chaptertwentytwo: ['Presentations', 'Storytelling', 'Communication'],
+  chaptertwentythree: [
+    'Negotiation',
+    'Stakeholder Management',
+    'Collaboration',
+  ],
+  chaptertwentyfour: ['Frameworks', 'Adaptation', 'Problem Solving'],
+  chaptertwentyfive: ['Creative Clarity', 'Self-Audit', 'Critique'],
+  chaptertwentysix: ['Flexibility', 'Adaptation', 'Strategy'],
+  chaptertwentyseven: ['Compromise', 'Collaboration', 'Project Management'],
+  chaptertwentyeight: ['Strategy', 'Visual Style', 'Alignment'],
+  chaptertwentynine: ['Project Management', 'Constraints', 'Trade-offs'],
+  chapterthirty: ['Uncertainty', 'Decision-Making', 'Professional Growth'],
+};
+
 export async function GET() {
   const chapters = getAllChapters();
   const baseUrl = siteConfig.primaryDomain;
@@ -70,8 +109,7 @@ export async function GET() {
       <link>${baseUrl}/${chapter.slug}</link>
       <guid>${baseUrl}/${chapter.slug}</guid>
       <pubDate>2024-01-01T00:00:00Z</pubDate>
-      <category>Design Education</category>
-      <category>Strategic Design</category>
+      ${(chapterCategories[chapter.slug] || ['Design']).map(cat => `<category>${escapeXml(cat)}</category>`).join('\n      ')}
     </item>`
       )
       .join('')}
