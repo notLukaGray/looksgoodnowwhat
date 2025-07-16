@@ -120,8 +120,8 @@ async function processMarkdownFile(inputFile, outputFilename) {
 async function main() {
   console.log('🎙️ Starting audio generation...\n');
   await processMarkdownFile(
-    'src/content/chapterone.md',
-    'chapterone-audio.mp3'
+    'src/content/chaptertwo.md',
+    'chaptertwo-audio.mp3'
   );
   console.log('\n🎉 Audio generation complete!');
 }
