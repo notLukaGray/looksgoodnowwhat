@@ -31,16 +31,16 @@ function getAudioFileSize(audioFile: string): number {
 }
 
 export async function GET() {
-  const chapters = getAllChapters();
+  const chapters = getAllChapters().filter(chapter => chapter.audioFile); // Only chapters with audio
   const baseUrl = siteConfig.primaryDomain;
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
-    <title>Looks Good, Now What</title>
-    <description>${escapeXml('Looks Good, Now What is a practical, honest guide to bridging the gap between creative work and real strategy. This book helps designers, students, and teams move beyond surface-level polish to create work that stands up to critique, context, and business needs. Learn how to frame problems, defend your ideas, and build design that actually matters.')}</description>
+    <title>Looks Good, Now What - Audio Chapters</title>
+    <description>${escapeXml('Audio versions of chapters from "Looks Good, Now What" - a practical guide to bridging the gap between creative work and real strategy. Perfect for designers, students, and teams who want to learn on the go.')}</description>
     <link>${baseUrl}</link>
-    <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${baseUrl}/podcast.xml" rel="self" type="application/rss+xml" />
     <language>en-US</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <pubDate>${new Date().toUTCString()}</pubDate>
@@ -48,15 +48,19 @@ export async function GET() {
     <managingEditor>luka@looksgoodnowwhat.com (Luka Gray)</managingEditor>
     <webMaster>luka@looksgoodnowwhat.com (Luka Gray)</webMaster>
     <itunes:author>Luka Gray</itunes:author>
-    <itunes:summary>${escapeXml('A practical, honest guide to bridging the gap between creative work and real strategy. Learn how to frame problems, defend your ideas, and build design that actually matters.')}</itunes:summary>
+    <itunes:summary>${escapeXml('Audio chapters from "Looks Good, Now What" - learn design strategy on the go.')}</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
     <itunes:category text="Education">
       <itunes:category text="Design" />
     </itunes:category>
+    <itunes:owner>
+      <itunes:name>Luka Gray</itunes:name>
+      <itunes:email>luka@looksgoodnowwhat.com</itunes:email>
+    </itunes:owner>
     <image>
       <url>${baseUrl}/apple-touch-icon.png</url>
-      <title>Looks Good, Now What</title>
+      <title>Looks Good, Now What - Audio Chapters</title>
       <link>${baseUrl}</link>
       <width>180</width>
       <height>180</height>
@@ -65,15 +69,8 @@ export async function GET() {
     <sy:updateFrequency>1</sy:updateFrequency>
     ${chapters
       .map(chapter => {
-        const audioUrl = chapter.audioFile
-          ? `${baseUrl}${chapter.audioFile}`
-          : '';
+        const audioUrl = `${baseUrl}${chapter.audioFile}`;
         const audioSize = getAudioFileSize(chapter.audioFile);
-        const audioEnclosure = audioUrl
-          ? `
-      <enclosure url="${audioUrl}" length="${audioSize}" type="audio/mpeg" />
-      <itunes:duration>${chapter.audioText || 'Unknown'}</itunes:duration>`
-          : '';
 
         return `
     <item>
@@ -84,7 +81,11 @@ export async function GET() {
       <pubDate>2024-01-01T00:00:00Z</pubDate>
       <dc:creator>Luka Gray</dc:creator>
       <dc:date>2024-01-01T00:00:00Z</dc:date>
-      <content:encoded><![CDATA[${chapterDescriptions[chapter.slug] || ''}]]></content:encoded>${audioEnclosure}
+      <content:encoded><![CDATA[${chapterDescriptions[chapter.slug] || ''}]]></content:encoded>
+      <enclosure url="${audioUrl}" length="${audioSize}" type="audio/mpeg" />
+      <itunes:duration>${chapter.audioText || 'Unknown'}</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:episode>${chapter.order}</itunes:episode>
       ${(chapterCategories[chapter.slug] || ['Design']).map(cat => `<category>${escapeXml(cat)}</category>`).join('\n      ')}
     </item>`;
       })

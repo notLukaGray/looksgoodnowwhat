@@ -4,6 +4,10 @@ import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
 import { generateKeywordsForChapter } from '../../lib/keywords';
 import { generateStructuredBreadcrumbs } from '../../lib/breadcrumbs';
+import {
+  chapterDescriptions,
+  chapterCategories,
+} from '../../lib/chapterDescriptions';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -67,14 +71,18 @@ export async function generateMetadata({
 
   return {
     title: chapter.chapter,
-    description: `Chapter ${chapter.order}: ${chapter.chapter} - Strategic design thinking insights for students and educators.`,
+    description:
+      chapterDescriptions[chapter.slug] ||
+      `Chapter ${chapter.order}: ${chapter.chapter} - Strategic design thinking insights for students and educators.`,
     keywords: keywords,
     authors: [{ name: 'Luka Gray' }],
     creator: 'Luka Gray',
     publisher: 'Luka Gray',
     openGraph: {
       title: chapter.chapter,
-      description: `Chapter ${chapter.order}: ${chapter.chapter}`,
+      description:
+        chapterDescriptions[chapter.slug] ||
+        `Chapter ${chapter.order}: ${chapter.chapter}`,
       url: `${siteConfig.primaryDomain}/${slug}`,
       type: 'article',
       images: [
@@ -88,7 +96,11 @@ export async function generateMetadata({
       publishedTime: '2024-01-01',
       modifiedTime: new Date().toISOString(),
       section: 'Design Education',
-      tags: ['design thinking', 'strategic design', 'education'],
+      tags: chapterCategories[chapter.slug] || [
+        'design thinking',
+        'strategic design',
+        'education',
+      ],
     },
     alternates: {
       canonical: `${siteConfig.primaryDomain}/${slug}`,
@@ -123,6 +135,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     // This will trigger the not-found.tsx page
     notFound();
   }
+
+  // Generate dynamic keywords
+  const keywords = chapter.keywords || generateKeywordsForChapter(chapter);
 
   const currentIndex = chapters.findIndex(c => c.slug === slug);
   const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
@@ -229,7 +244,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               '@context': 'https://schema.org',
               '@type': 'Article',
               headline: chapter.chapter,
-              description: `Chapter ${chapter.order}: ${chapter.chapter}`,
+              description:
+                chapterDescriptions[chapter.slug] ||
+                `Chapter ${chapter.order}: ${chapter.chapter}`,
               author: {
                 '@type': 'Person',
                 name: 'Luka Gray',
@@ -245,7 +262,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                 ? `${siteConfig.primaryDomain}${chapter.keyImage}`
                 : `${siteConfig.primaryDomain}/apple-touch-icon.png`,
               articleSection: 'Design Education',
-              keywords: 'design thinking, strategic design, education',
+              keywords: keywords.join(', '),
               educationalLevel: 'intermediate',
               audience: {
                 '@type': 'Audience',
@@ -260,7 +277,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               '@context': 'https://schema.org',
               '@type': 'Chapter',
               name: chapter.chapter,
-              description: `Chapter ${chapter.order}: ${chapter.chapter}`,
+              description:
+                chapterDescriptions[chapter.slug] ||
+                `Chapter ${chapter.order}: ${chapter.chapter}`,
               position: chapter.order,
               isPartOf: {
                 '@type': 'Book',
@@ -273,6 +292,38 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               url: `${siteConfig.primaryDomain}/${slug}`,
             },
             breadcrumbs,
+            ...(chapter.audioFile
+              ? [
+                  {
+                    '@context': 'https://schema.org',
+                    '@type': 'AudioObject',
+                    name: `${chapter.chapter} - Audio`,
+                    description:
+                      chapterDescriptions[chapter.slug] ||
+                      `Audio version of Chapter ${chapter.order}: ${chapter.chapter}`,
+                    contentUrl: `${siteConfig.primaryDomain}${chapter.audioFile}`,
+                    encodingFormat: 'audio/mpeg',
+                    duration: chapter.audioText || 'Unknown',
+                    author: {
+                      '@type': 'Person',
+                      name: 'Luka Gray',
+                    },
+                    publisher: {
+                      '@type': 'Person',
+                      name: 'Luka Gray',
+                    },
+                    datePublished: '2024-01-01',
+                    isPartOf: {
+                      '@type': 'Book',
+                      name: 'Looks Good, Now What',
+                      author: {
+                        '@type': 'Person',
+                        name: 'Luka Gray',
+                      },
+                    },
+                  },
+                ]
+              : []),
           ]),
         }}
       />

@@ -129,6 +129,20 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://free-images.com" />
 
+        {/* RSS Feeds */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed"
+          href="/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Podcast Feed"
+          href="/podcast.xml"
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
