@@ -1,6 +1,16 @@
 import { getAllChapters } from '../../lib/chapters';
 import { siteConfig } from '../../lib/config';
 
+// Function to escape XML entities
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 export async function GET() {
   const chapters = getAllChapters();
   const baseUrl = siteConfig.primaryDomain;
@@ -20,8 +30,8 @@ export async function GET() {
       .map(
         chapter => `
     <item>
-      <title>Chapter ${chapter.order}: ${chapter.chapter}</title>
-      <description>Chapter ${chapter.order}: ${chapter.chapter} - Strategic design thinking insights for students and educators.</description>
+      <title>Chapter ${chapter.order}: ${escapeXml(chapter.chapter)}</title>
+      <description>Chapter ${chapter.order}: ${escapeXml(chapter.chapter)} - Strategic design thinking insights for students and educators.</description>
       <link>${baseUrl}/${chapter.slug}</link>
       <guid>${baseUrl}/${chapter.slug}</guid>
       <pubDate>2024-01-01T00:00:00Z</pubDate>
