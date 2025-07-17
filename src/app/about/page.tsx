@@ -2,7 +2,6 @@ import React from 'react';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
 import Image from 'next/image';
-import Breadcrumbs from '../../components/Breadcrumbs';
 import {
   getAboutBreadcrumbs,
   generateStructuredStaticBreadcrumbs,
@@ -72,10 +71,6 @@ export default function AboutPage() {
     generateStructuredStaticBreadcrumbs(breadcrumbs);
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
-      {/* Visual Breadcrumbs */}
-      <div className="w-full max-w-5xl mx-auto mb-4">
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </div>
       {/* Structured Data */}
       <script
         type="application/ld+json"

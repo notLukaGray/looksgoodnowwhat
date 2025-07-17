@@ -87,10 +87,12 @@ export default function HomePage() {
       className="min-h-screen bg-[#dfdfdf] flex flex-col px-2 py-16 overflow-x-hidden"
       style={{ paddingTop: '40px' }}
     >
-      {/* Visual Breadcrumbs */}
-      <div className="w-full max-w-5xl mx-auto mb-4">
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </div>
+      {/* Visual Breadcrumbs - Hidden on home page */}
+      {breadcrumbs.length > 1 && (
+        <div className="w-full max-w-5xl mx-auto mb-4">
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </div>
+      )}
       {/* Structured Data */}
       <script
         type="application/ld+json"

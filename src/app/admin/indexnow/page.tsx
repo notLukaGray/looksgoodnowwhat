@@ -4,7 +4,6 @@ export const dynamic = 'force-dynamic';
 
 import { Suspense } from 'react';
 import IndexNowAdminClient from './IndexNowAdminClient';
-import Breadcrumbs from '../../../components/Breadcrumbs';
 import {
   getAdminBreadcrumbs,
   generateStructuredStaticBreadcrumbs,
@@ -16,10 +15,6 @@ export default function Page() {
     generateStructuredStaticBreadcrumbs(breadcrumbs);
   return (
     <>
-      {/* Visual Breadcrumbs */}
-      <div className="w-full max-w-5xl mx-auto mb-4">
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </div>
       {/* Structured Data */}
       <script
         type="application/ld+json"

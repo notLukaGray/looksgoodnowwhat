@@ -1,5 +1,4 @@
 import React from 'react';
-import Breadcrumbs from '../../components/Breadcrumbs';
 import {
   getTableOfContentsBreadcrumbs,
   generateStructuredStaticBreadcrumbs,
@@ -114,18 +113,14 @@ export default function TableOfContentsPage() {
   };
   return (
     <>
-      {}
-      <div className="w-full max-w-5xl mx-auto mb-4">
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </div>
-      {}
+      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredBreadcrumbs),
         }}
       />
-      {}
+      {/* Table of Contents Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
