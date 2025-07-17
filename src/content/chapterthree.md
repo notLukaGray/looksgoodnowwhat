@@ -33,7 +33,7 @@ Design school teaches you that every choice carries meaning. It's your job to sh
 
 That's why starting with perspective, not isolated choices, matters. Perspective provides a common ground for you and your team. It's easier to debate, easier to clarify, easier to align around. It sets the expectation that every part of the design serves a purpose. Not to look good or feel right, but to convey a specific message. When the work feels off, you won't waste time arguing taste. You ask the fundamental question: Does this match the perspective we set? Perspective shifts feedback from opinion to problem-solving. It keeps your decisions sharp and your process intentional.
 
-With a foundation set, it's now time to pressure test its strength. That's where the argument comes in. Your work doesn't just express a point of view. It argues for it. Every decision is a claim. Every choice is evidence. And the whole thing needs to stand up when questioned. Perspective sets direction. Argument proves it. That's the work: turning vision into something defensible.
+With a foundation set, it's now time to pressure test its strength. That's where the argument comes in. Your work doesn't just express a point of view. It argues for it. Every decision is a claim. Every choice is evidence. And the whole thing needs to stand up when questioned. Perspective sets direction. Argument proves it, turning vision into something defensible.
 
 <div style="height: 10px;"></div>
 
@@ -43,7 +43,7 @@ Put every design decision on trial. Forget checklists. Build reflexes. Keep the 
 
 Sometimes you'll end up questioning the foundation, all the parts we have built so far. That is part of our process. An iterative pressure-testing of our thinking exposes weak spots that you may have missed. Treating design as an argument doesn't mean avoiding risk. It means owning it. You're not playing safe; you're pushing boundaries with purpose.
 
-Trust your gut before you reach for a framework. If something feels off, it probably is. Pause and dig. Most good ideas don't start as bullet points. They begin as hunches. The framework that follows isn't mine. It's a classic argument structure: claim, evidence, warrant. I'm just applying it to design. Here's your quick, no-nonsense way to see if your instincts can hold.
+Trust your gut before you reach for a framework. If something feels off, it probably is. Most interesting perspectives don't start as bullet points. They begin as hunches. The framework that follows isn't mine. It's a classic argument structure: claim, evidence, warrant. I'm just applying it to design. Here's your quick, no bullshit way to see if your instincts can hold.
 
 <div style="height: 10px;"></div>
 
