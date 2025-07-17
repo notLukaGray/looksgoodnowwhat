@@ -96,6 +96,8 @@ export function getAdminBreadcrumbs(): BreadcrumbItem[] {
   ];
 }
 
+const CANONICAL_DOMAIN = 'https://looksgoodnowwhat.com';
+
 // Structured data for static pages
 export function generateStructuredStaticBreadcrumbs(
   breadcrumbs: BreadcrumbItem[]
@@ -110,7 +112,7 @@ export function generateStructuredStaticBreadcrumbs(
       '@type': 'ListItem',
       position: item.position,
       item: {
-        '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://looksgoodnowwhat.com'}${item.url}`,
+        '@id': `${CANONICAL_DOMAIN}${item.url}`,
         name: item.name.trim(),
       },
     })),
@@ -133,7 +135,7 @@ export function generateStructuredBreadcrumbs(chapter: Chapter) {
       '@type': 'ListItem',
       position: item.position,
       item: {
-        '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://looksgoodnowwhat.com'}${item.url}`,
+        '@id': `${CANONICAL_DOMAIN}${item.url}`,
         name: item.name.trim(),
       },
     })),

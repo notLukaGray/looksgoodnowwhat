@@ -150,7 +150,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
-        {/* Background Image Section */}
+        {}
         <div
           className="rounded-none shadow basis-[20%] lg:basis-[40%] h-[20vh] lg:h-auto max-h-[20vh] lg:max-h-none relative overflow-hidden"
           style={{ backgroundColor: '#dfdfdf' }}
@@ -171,12 +171,12 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           <ShareButton chapter={chapter.chapter} chapterSlug={slug} />
         </div>
 
-        {/* Content Section */}
+        {}
         <div className="flex-1 bg-white rounded-none shadow-lg p-6 overflow-y-auto basis-[80%] lg:basis-[60%] flex flex-col m-0">
-          {/* Spacer */}
+          {}
           <div style={{ height: '100px' }} />
 
-          {/* Audio Player */}
+          {}
           {chapter.audioFile && (
             <div className="w-4/5 mx-auto">
               <div
@@ -193,13 +193,13 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             </div>
           )}
 
-          {/* Content */}
+          {}
           <div className="prose prose-sm md:prose-base max-w-none w-4/5 mx-auto">
             <MarkdownWithAnchors content={chapter.content} />
           </div>
         </div>
 
-        {/* Navigation Links */}
+        {}
         {prevChapter && (
           <Link
             href={`/${prevChapter.slug}`}
@@ -235,7 +235,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         )}
       </div>
 
-      {/* Structured Data */}
+      {}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -250,20 +250,24 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               author: {
                 '@type': 'Person',
                 name: 'Luka Gray',
+                url: 'https://notlukagray.com/',
               },
               publisher: {
                 '@type': 'Person',
                 name: 'Luka Gray',
+                url: 'https://notlukagray.com/',
               },
-              datePublished: '2024-01-01',
-              dateModified: '2024-01-01',
+              datePublished: '2025-07-14T12:52:57Z',
+              dateModified: chapter.modifiedTime || '2025-07-14T12:52:57Z',
               url: `${siteConfig.primaryDomain}/${slug}`,
               image: chapter.keyImage
-                ? `${siteConfig.primaryDomain}${chapter.keyImage}`
+                ? chapter.keyImage.startsWith('http')
+                  ? chapter.keyImage
+                  : `${siteConfig.primaryDomain}${chapter.keyImage}`
                 : `${siteConfig.primaryDomain}/apple-touch-icon.png`,
               articleSection: 'Design Education',
               keywords: keywords.join(', '),
-              educationalLevel: 'intermediate',
+              educationalLevel: 'advanced',
               audience: {
                 '@type': 'Audience',
                 audienceType: 'students, young professionals',
@@ -287,6 +291,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                 author: {
                   '@type': 'Person',
                   name: 'Luka Gray',
+                  url: 'https://notlukagray.com/',
                 },
               },
               url: `${siteConfig.primaryDomain}/${slug}`,
@@ -307,18 +312,21 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                     author: {
                       '@type': 'Person',
                       name: 'Luka Gray',
+                      url: 'https://notlukagray.com/',
                     },
                     publisher: {
                       '@type': 'Person',
                       name: 'Luka Gray',
+                      url: 'https://notlukagray.com/',
                     },
-                    datePublished: '2024-01-01',
+                    datePublished: '2025-07-14T12:52:57Z',
                     isPartOf: {
                       '@type': 'Book',
                       name: 'Looks Good, Now What',
                       author: {
                         '@type': 'Person',
                         name: 'Luka Gray',
+                        url: 'https://notlukagray.com/',
                       },
                     },
                   },

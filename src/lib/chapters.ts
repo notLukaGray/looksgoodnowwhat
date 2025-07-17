@@ -2,6 +2,17 @@ import fs from 'fs';
 import path from 'path';
 import { cache } from 'react';
 
+// Helper to get file modification time
+function getFileModificationTime(filePath: string): string {
+  try {
+    const stats = fs.statSync(filePath);
+    return stats.mtime.toISOString();
+  } catch {
+    // Fallback to current time if file doesn't exist
+    return new Date().toISOString();
+  }
+}
+
 // Helper to parse frontmatter and content
 function parseChapterMarkdown(md: string) {
   const partMatch = md.match(/Part: ([^\n]+)/);
@@ -43,6 +54,7 @@ export interface Chapter {
   audioText: string;
   content: string;
   keywords?: string[]; // Optional custom keywords to override automatic extraction
+  modifiedTime?: string; // File modification time
 }
 
 export interface NavItem {
@@ -68,8 +80,14 @@ export const getAllChapters = cache((): Chapter[] => {
     .filter(f => f.endsWith('.md') && f !== 'home.md')
     .map(f => {
       const slug = f.replace(/\.md$/, '');
-      const md = fs.readFileSync(path.join(contentDir, f), 'utf8');
-      return { slug, ...parseChapterMarkdown(md) };
+      const filePath = path.join(contentDir, f);
+      const md = fs.readFileSync(filePath, 'utf8');
+      const parsed = parseChapterMarkdown(md);
+      return {
+        slug,
+        ...parsed,
+        modifiedTime: getFileModificationTime(filePath),
+      };
     });
 
   // Sort by part order, then by chapter order

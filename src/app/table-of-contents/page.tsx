@@ -96,6 +96,14 @@ export default function TableOfContentsPage() {
       author: {
         '@type': 'Person',
         name: 'Luka Gray',
+        url: 'https://notlukagray.com/',
+      },
+      genre: 'Design, Education, Business Strategy',
+      educationalLevel: 'advanced',
+      publisher: {
+        '@type': 'Person',
+        name: 'Luka Gray',
+        url: 'https://notlukagray.com/',
       },
     },
     hasPart: chapters.map(chapter => ({
