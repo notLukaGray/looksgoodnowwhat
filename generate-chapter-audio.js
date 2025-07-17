@@ -21,16 +21,41 @@ function extractSectionsFromMarkdown(markdownContent) {
   const sections = content
     .split(/\n(?=#+\s)/g)
     .map(section => {
+      // Remove HTML tags
       section = section.replace(/<[^>]*>/g, '');
 
+      // Remove markdown headers
       section = section.replace(/#{1,6}\s+/g, '');
+      
+      // Remove bold formatting (keep content)
       section = section.replace(/\*\*(.*?)\*\*/g, '$1');
+      
+      // Remove italic formatting (keep content)
       section = section.replace(/\*(.*?)\*/g, '$1');
+      
+      // Remove underscore italic formatting (keep content)
+      section = section.replace(/_(.*?)_/g, '$1');
+      
+      // Remove code formatting (keep content)
       section = section.replace(/`(.*?)`/g, '$1');
+      
+      // Remove links (keep link text)
       section = section.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+      
+      // Remove images
       section = section.replace(/!\[([^\]]*)\]\([^)]*\)/g, '');
+      
+      // Remove any remaining markdown formatting characters
+      section = section.replace(/\*\*/g, '');
+      section = section.replace(/\*/g, '');
+      section = section.replace(/_/g, '');
+      section = section.replace(/`/g, '');
+      
+      // Clean up extra whitespace
       section = section.replace(/\n\s*\n/g, '\n\n');
+      section = section.replace(/\s+/g, ' ');
       section = section.trim();
+      
       return section;
     })
     .filter(Boolean);

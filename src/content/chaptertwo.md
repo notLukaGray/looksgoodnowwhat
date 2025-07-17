@@ -189,3 +189,5 @@ Look back at your last project. Be honest. Were you solving the real problem, or
 Framing the problem is only half the job. Next, you need to explain your solution—chapter 3 shifts from defining what we are solving to showing why your answer holds up. Because design isn't decoration, it's an argument. Every color, word, and layout is a statement—and you're the one who has to prove it makes sense.
 
 We'll get into how to build proof into your work, how to explain your decisions without sounding defensive, and how to turn feedback into something useful instead of something painful. If this chapter helped you ask the right questions, the next one is about answering them with work that speaks for itself.
+
+<div style="height: 100px;"></div>

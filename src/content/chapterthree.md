@@ -57,9 +57,9 @@ If this feels familiar, good. It mirrors what we unpacked back in Chapter One: *
 
 Here's a simple example.
 
-- **Claim:**: _"I believe changing the button to bright orange will help."_
-- **Evidence:**: _"In testing, the orange button increased clicks by seventeen percent compared to the old blue one."_
-- **Warrant:**: _"Orange draws attention faster, which supports our goal of driving stronger engagement."_
+- **Claim:** _"I believe changing the button to bright orange will help."_
+- **Evidence:** _"In testing, the orange button increased clicks by seventeen percent compared to the old blue one."_
+- **Warrant:** _"Orange draws attention faster, which supports our goal of driving stronger engagement."_
 
 <div style="height: 20px;"></div>
 
@@ -225,3 +225,5 @@ You've spent this chapter turning choices into arguments, feelings into structur
 Design is an argument disguised as an experience. Emotion sparks the claim, logic builds the evidence, and credibility holds it together. When every choice can be explained in plain language and traced back to a human truth, feedback stops feeling like a fight. It becomes fuel. Proof keeps you honest. Clear reasoning keeps you steady. And resilience lets you push forward when the pressure mounts.
 
 Next, we move from individual decisions to the competitive space. Chapter Four is about Positioning That Means Something. Before you choose a color or typeface, you'll learn how to claim mental real estate. We'll map competitors, find the white space, and build a value proposition that design amplifies, not invents.
+
+<div style="height: 100px;"></div>
