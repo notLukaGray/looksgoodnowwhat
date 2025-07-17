@@ -2,6 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import { siteConfig } from '../../lib/config';
 import Image from 'next/image';
+import Breadcrumbs from '../../components/Breadcrumbs';
+import {
+  getAboutBreadcrumbs,
+  generateStructuredStaticBreadcrumbs,
+} from '../../lib/breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'About Luka Gray',
@@ -62,8 +67,22 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const breadcrumbs = getAboutBreadcrumbs();
+  const structuredBreadcrumbs =
+    generateStructuredStaticBreadcrumbs(breadcrumbs);
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
+      {/* Visual Breadcrumbs */}
+      <div className="w-full max-w-5xl mx-auto mb-4">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+      </div>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredBreadcrumbs),
+        }}
+      />
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
         {}
         <div

@@ -37,39 +37,104 @@ export function generateBreadcrumbsForChapter(
 
   // Add part level breadcrumb
   if (chapter.part && chapter.part !== 'INTRODUCTION') {
-    breadcrumbs.push({
-      name: getEnhancedBreadcrumbName(chapter, 'part'),
-      url: `/table-of-contents#${chapter.part.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
-      position: 2,
-      keywords: [chapter.part.toLowerCase().replace(/[^a-z0-9]+/g, ' ')],
-    });
+    const partName = getEnhancedBreadcrumbName(chapter, 'part');
+    if (partName && partName.trim()) {
+      breadcrumbs.push({
+        name: partName,
+        url: `/table-of-contents#${chapter.part.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+        position: 2,
+        keywords: [chapter.part.toLowerCase().replace(/[^a-z0-9]+/g, ' ')],
+      });
+    }
   }
 
   // Add chapter breadcrumb with keywords
-  const chapterKeywords = generateKeywordsForChapter(chapter);
-  breadcrumbs.push({
-    name: getEnhancedBreadcrumbName(chapter, 'chapter'),
-    url: `/${chapter.slug}`,
-    position: breadcrumbs.length + 1,
-    keywords: chapterKeywords.slice(0, 5), // Top 5 keywords for breadcrumb
-  });
+  const chapterName = getEnhancedBreadcrumbName(chapter, 'chapter');
+  if (chapterName && chapterName.trim()) {
+    const chapterKeywords = generateKeywordsForChapter(chapter);
+    breadcrumbs.push({
+      name: chapterName,
+      url: `/${chapter.slug}`,
+      position: breadcrumbs.length + 1,
+      keywords: chapterKeywords.slice(0, 5), // Top 5 keywords for breadcrumb
+    });
+  }
 
   return breadcrumbs;
 }
 
-export function generateStructuredBreadcrumbs(chapter: Chapter) {
-  const breadcrumbs = generateBreadcrumbsForChapter(chapter);
+// Static breadcrumbs for top-level pages
+export function getHomeBreadcrumbs(): BreadcrumbItem[] {
+  return [{ name: 'Home', url: '/', position: 1 }];
+}
 
+export function getAboutBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: 'Home', url: '/', position: 1 },
+    { name: 'About', url: '/about', position: 2 },
+  ];
+}
+
+export function getTableOfContentsBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: 'Home', url: '/', position: 1 },
+    { name: 'Table of Contents', url: '/table-of-contents', position: 2 },
+  ];
+}
+
+export function getSearchBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: 'Home', url: '/', position: 1 },
+    { name: 'Search', url: '/search', position: 2 },
+  ];
+}
+
+export function getAdminBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: 'Home', url: '/', position: 1 },
+    { name: 'Admin', url: '/admin', position: 2 },
+  ];
+}
+
+// Structured data for static pages
+export function generateStructuredStaticBreadcrumbs(
+  breadcrumbs: BreadcrumbItem[]
+) {
+  const validBreadcrumbs = breadcrumbs.filter(
+    item => item.name && item.name.trim() && item.url && item.position > 0
+  );
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map(item => ({
+    itemListElement: validBreadcrumbs.map(item => ({
       '@type': 'ListItem',
       position: item.position,
       item: {
         '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://looksgoodnowwhat.com'}${item.url}`,
-        name: item.name,
-        ...(item.keywords && { keywords: item.keywords.join(', ') }),
+        name: item.name.trim(),
+      },
+    })),
+  };
+}
+
+// Structured data for chapter pages
+export function generateStructuredBreadcrumbs(chapter: Chapter) {
+  const breadcrumbs = generateBreadcrumbsForChapter(chapter);
+
+  // Filter out any breadcrumbs with empty or invalid names
+  const validBreadcrumbs = breadcrumbs.filter(
+    item => item.name && item.name.trim() && item.url && item.position > 0
+  );
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: validBreadcrumbs.map(item => ({
+      '@type': 'ListItem',
+      position: item.position,
+      item: {
+        '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://looksgoodnowwhat.com'}${item.url}`,
+        name: item.name.trim(),
       },
     })),
   };

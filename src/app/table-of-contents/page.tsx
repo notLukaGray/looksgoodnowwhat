@@ -1,4 +1,9 @@
 import React from 'react';
+import Breadcrumbs from '../../components/Breadcrumbs';
+import {
+  getTableOfContentsBreadcrumbs,
+  generateStructuredStaticBreadcrumbs,
+} from '../../lib/breadcrumbs';
 
 export const metadata = {
   title: 'Table of Contents - Looks Good, Now What',
@@ -78,8 +83,47 @@ const chapters = [
 ];
 
 export default function TableOfContentsPage() {
+  const breadcrumbs = getTableOfContentsBreadcrumbs();
+  const structuredBreadcrumbs =
+    generateStructuredStaticBreadcrumbs(breadcrumbs);
+  const tableOfContentsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TableOfContents',
+    name: 'Table of Contents',
+    about: {
+      '@type': 'Book',
+      name: 'Looks Good, Now What',
+      author: {
+        '@type': 'Person',
+        name: 'Luka Gray',
+      },
+    },
+    hasPart: chapters.map(chapter => ({
+      '@type': 'Chapter',
+      name: chapter.title,
+      url: `https://looksgoodnowwhat.com/${chapter.slug}`,
+    })),
+  };
   return (
     <>
+      {/* Visual Breadcrumbs */}
+      <div className="w-full max-w-5xl mx-auto mb-4">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+      </div>
+      {/* Structured Data: Breadcrumbs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredBreadcrumbs),
+        }}
+      />
+      {/* Structured Data: TableOfContents */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(tableOfContentsJsonLd),
+        }}
+      />
       <h1>Table of Contents</h1>
       <p>All chapters in &quot;Looks Good, Now What&quot;:</p>
       <ul>
@@ -89,36 +133,6 @@ export default function TableOfContentsPage() {
           </li>
         ))}
       </ul>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ItemList',
-            name: 'Table of Contents - Looks Good, Now What',
-            description: 'All chapters in the book "Looks Good, Now What"',
-            numberOfItems: chapters.length,
-            itemListElement: chapters.map((chapter, index) => ({
-              '@type': 'ListItem',
-              position: index + 1,
-              item: {
-                '@type': 'Chapter',
-                '@id': `https://looksgoodnowwhat.com/${chapter.slug}`,
-                name: chapter.title,
-                url: `https://looksgoodnowwhat.com/${chapter.slug}`,
-                isPartOf: {
-                  '@type': 'Book',
-                  name: 'Looks Good, Now What',
-                  author: {
-                    '@type': 'Person',
-                    name: 'Luka Gray',
-                  },
-                },
-              },
-            })),
-          }),
-        }}
-      />
     </>
   );
 }

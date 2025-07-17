@@ -3,6 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { siteConfig } from '../lib/config';
+import Breadcrumbs from '../components/Breadcrumbs';
+import {
+  getHomeBreadcrumbs,
+  generateStructuredStaticBreadcrumbs,
+} from '../lib/breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Looks Good, Now What',
@@ -74,11 +79,25 @@ const publisher2 = '';
 const footer = 'Luka Gray · © All Rights Reserved';
 
 export default function HomePage() {
+  const breadcrumbs = getHomeBreadcrumbs();
+  const structuredBreadcrumbs =
+    generateStructuredStaticBreadcrumbs(breadcrumbs);
   return (
     <main
       className="min-h-screen bg-[#dfdfdf] flex flex-col px-2 py-16 overflow-x-hidden"
       style={{ paddingTop: '40px' }}
     >
+      {/* Visual Breadcrumbs */}
+      <div className="w-full max-w-5xl mx-auto mb-4">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+      </div>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredBreadcrumbs),
+        }}
+      />
       <h1 className="sr-only">Strategic Design Thinking</h1>
       <div className="flex-1 mx-auto flex flex-col lg:flex-row justify-center items-center lg:h-full w-full lg:gap-8">
         {}
