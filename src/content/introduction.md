@@ -29,9 +29,7 @@ In that moment, I thought, "Look at it; isn't that enough?" But just like that, 
 
 This book is about that gap: the space between **sharp creative** and **real strategy**. It explores the difference between work that appears polished and work that can withstand context, critique, and business needs.
 
-This book isn't just a how-to guide on design. It's an exploration of why design matters, what gives it coherence, how it withstands scrutiny, and what ultimately makes it resonate. You already possess the skills to create.
-
-You have the taste, the training, and the tools. But sooner or later, someone will challenge you with that lingering "why." _Why this idea? Why this form? Why now?_ If your only answer is "it feels right," it won't be enough.
+This book isn't just a how-to guide on design. It's an exploration of why design matters, what gives it coherence, how it withstands scrutiny, and what ultimately makes it resonate. You already possess the skills to create. You have the taste, the training, and the tools. But sooner or later, someone will challenge you with that lingering "why." _Why this idea? Why this form? Why now?_ If your only answer is "it feels right," it won't be enough.
 
 As you read ahead, let us begin to construct that answer. We will start to infuse creative work with meaning. Instead of relying on best practices, punchy headlines, and images that "pop", we will focus on cultivating clear messaging, critical thinking, and asking the right questions before diving into the work.
 
