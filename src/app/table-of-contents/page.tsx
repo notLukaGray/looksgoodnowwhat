@@ -28,10 +28,10 @@ export const metadata = {
     'gray',
   ],
   robots: {
-    index: false,
+    index: true,
     follow: true,
     googleBot: {
-      index: false,
+      index: true,
       follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
@@ -114,18 +114,18 @@ export default function TableOfContentsPage() {
   };
   return (
     <>
-      {/* Visual Breadcrumbs */}
+      {}
       <div className="w-full max-w-5xl mx-auto mb-4">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
-      {/* Structured Data: Breadcrumbs */}
+      {}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredBreadcrumbs),
         }}
       />
-      {/* Structured Data: TableOfContents */}
+      {}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
