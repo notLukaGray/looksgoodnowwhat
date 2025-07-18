@@ -232,19 +232,19 @@ function example() {
 2. Another numbered item
 3. Final numbered item
 
-```
-
 ## SEO Features
 
 The book website includes comprehensive SEO optimization:
 
 ### Meta Tags
+
 - Complete meta descriptions for all pages
 - Proper title tags with chapter information
 - Author and publisher meta tags
 - Language and encoding specifications
 
 ### Structured Data
+
 - **Book Schema**: Complete book information
 - **Article Schema**: Individual chapter data
 - **Chapter Schema**: Chapter-specific metadata
@@ -252,6 +252,7 @@ The book website includes comprehensive SEO optimization:
 - **Organization Schema**: Author information
 
 ### Technical SEO
+
 - XML sitemap generation
 - Robots.txt configuration
 - Canonical URLs
@@ -263,12 +264,14 @@ The book website includes comprehensive SEO optimization:
 The book includes AI-generated audio narration for each chapter:
 
 ### Technical Specifications
+
 - **Voice**: en-US-AlloyTurboMultilingualNeural
 - **Format**: MP3, 24kHz, 48kbps, mono
 - **Processing**: Section-by-section for optimal quality
 - **Service**: Azure Cognitive Services Text-to-Speech
 
 ### Features
+
 - Automatic markdown parsing and cleaning
 - HTML tag removal
 - Code block exclusion
@@ -280,12 +283,14 @@ The book includes AI-generated audio narration for each chapter:
 The site is optimized for deployment on Vercel:
 
 ### Setup Process
+
 1. Connect repository to Vercel
 2. Configure environment variables
 3. Set up automatic deployments
 4. Configure custom domain (optional)
 
 ### Performance Optimizations
+
 - Static generation for all pages
 - Image optimization with Next.js
 - Font optimization and preloading
@@ -311,4 +316,7 @@ All content is © Luka Gray. The codebase is available for educational purposes.
 - **Website**: [notlukagray.com](https://notlukagray.com)
 - **Book**: [looksgoodnowwhat.com](https://looksgoodnowwhat.com)
 - **Focus**: Strategic design thinking and design education
+
+```
+
 ```
