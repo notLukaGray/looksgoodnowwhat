@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllChapters } from '../../../lib/chapters';
+import { createSearchIndex, performSearch } from '../../../lib/search';
 
 interface CacheEntry {
   data: { results: Array<{ slug: string; title: string; excerpt: string }> };
@@ -9,6 +9,16 @@ interface CacheEntry {
 // Cache search results for better performance
 const searchCache = new Map<string, CacheEntry>();
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+// Create search index once and reuse
+let searchIndex: ReturnType<typeof createSearchIndex> | null = null;
+
+function getSearchIndex() {
+  if (!searchIndex) {
+    searchIndex = createSearchIndex();
+  }
+  return searchIndex;
+}
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -27,20 +37,14 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const chapters = getAllChapters();
+    const index = getSearchIndex();
+    const searchResults = performSearch(query, index, limit);
 
-    const results = chapters
-      .filter(chapter => {
-        const searchText =
-          `${chapter.chapter} ${chapter.content}`.toLowerCase();
-        return searchText.includes(query.toLowerCase());
-      })
-      .map(chapter => ({
-        slug: chapter.slug,
-        title: chapter.chapter,
-        excerpt: chapter.content.substring(0, 200) + '...',
-      }))
-      .slice(0, limit);
+    const results = searchResults.map(result => ({
+      slug: result.slug,
+      title: result.title,
+      excerpt: result.excerpt,
+    }));
 
     const response = { results };
 
@@ -51,7 +55,8 @@ export async function GET(request: NextRequest) {
     });
 
     return NextResponse.json(response);
-  } catch {
+  } catch (error) {
+    console.error('Search error:', error);
     return NextResponse.json({ results: [] });
   }
 }

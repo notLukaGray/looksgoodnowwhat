@@ -38,7 +38,9 @@ export function createSearchIndex(): SearchIndex {
     const sections = parseChapterSections(chapter.content, chapter.chapter);
 
     sections.forEach(section => {
-      const searchableText = `${chapter.chapter} ${section.heading} ${section.content}`;
+      // Clean the content for search indexing
+      const cleanContent = cleanMarkdownContent(section.content);
+      const searchableText = `${chapter.chapter} ${section.heading} ${cleanContent}`;
 
       const result: SearchResult = {
         id: indexId.toString(),
@@ -47,7 +49,7 @@ export function createSearchIndex(): SearchIndex {
         part: chapter.part,
         chapter: chapter.chapter,
         excerpt: createExcerpt(section.content, 200),
-        content: section.content,
+        content: cleanContent, // Store cleaned content for search results
         heading: section.heading,
         anchorId: section.anchorId,
       };
@@ -60,6 +62,27 @@ export function createSearchIndex(): SearchIndex {
   });
 
   return { index, data: searchData };
+}
+
+// Clean markdown content for search indexing
+function cleanMarkdownContent(content: string): string {
+  return content
+    .replace(/<[^>]*>/g, '') // Remove all HTML tags
+    .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+    .replace(/`([^`]+)`/g, '$1') // Remove inline code backticks
+    .replace(/#{1,6}\s+/g, '') // Remove headers
+    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
+    .replace(/\*(.*?)\*/g, '$1') // Remove italics
+    .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Remove links, keep text
+    .replace(/!\[(.*?)\]\(.*?\)/g, '') // Remove images
+    .replace(/>\s*(.*)/g, '$1') // Remove blockquotes
+    .replace(/^\s*[-*+]\s+/gm, '') // Remove list markers
+    .replace(/^\s*\d+\.\s+/gm, '') // Remove numbered list markers
+    .replace(/^\s*\|.*\|.*$/gm, '') // Remove table rows
+    .replace(/^\s*---+\s*$/gm, '') // Remove horizontal rules
+    .replace(/\n+/g, ' ') // Replace newlines with spaces
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim();
 }
 
 // Parse chapter content into sections based on headings
@@ -141,16 +164,8 @@ function parseChapterSections(
 
 // Create a short excerpt from content
 function createExcerpt(content: string, maxLength: number): string {
-  // Remove HTML tags and markdown formatting for cleaner excerpts
-  const cleanContent = content
-    .replace(/<[^>]*>/g, '') // Remove all HTML tags
-    .replace(/#{1,6}\s+/g, '') // Remove headers
-    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
-    .replace(/\*(.*?)\*/g, '$1') // Remove italics
-    .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Remove links, keep text
-    .replace(/`(.*?)`/g, '$1') // Remove code backticks
-    .replace(/\n+/g, ' ') // Replace newlines with spaces
-    .trim();
+  // Use the shared cleaning function
+  const cleanContent = cleanMarkdownContent(content);
 
   if (cleanContent.length <= maxLength) {
     return cleanContent;
@@ -210,15 +225,7 @@ export function performSearch(
 
 // Create an excerpt with highlighted search terms
 function createHighlightedExcerpt(content: string, query: string): string {
-  const cleanContent = content
-    .replace(/<[^>]*>/g, '') // Remove all HTML tags
-    .replace(/#{1,6}\s+/g, '') // Remove headers
-    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
-    .replace(/\*(.*?)\*/g, '$1') // Remove italics
-    .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Remove links, keep text
-    .replace(/`(.*?)`/g, '$1') // Remove code backticks
-    .replace(/\n+/g, ' ') // Replace newlines with spaces
-    .trim();
+  const cleanContent = cleanMarkdownContent(content);
 
   // Find the first occurrence of any search term
   const searchTerms = query.toLowerCase().split(/\s+/);
