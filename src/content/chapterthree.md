@@ -65,7 +65,7 @@ Here's a simple example.
 
 The point isn't that color changes drive traffic by magic. It's that design influences behavior in subtle, measurable ways. And more importantly, the choice can be explained, tested, and defended. That's **claim**, **evidence**, and **warrant** in action. _Feel first, prove second._ The framework sharpens your instincts. It doesn't replace them. It only works when your inputs are clear and your honesty is brutal. Use it to expose weak points, not to conceal them.
 
-If the process starts feeling clinical, stop. Design is still emotion, taste, and voice. The framework gives that spark structure and credibility, but it never replaces it. A riot of color can be exactly right when the brand demands it—think early-era MTV. _Loud for the sake of loud is just noise._ The difference is intent.
+If the process starts feeling clinical, stop. Design is still emotion, taste, and voice. The framework gives that spark structure and credibility, but it never replaces it. A riot of color can be exactly right when the brand demands it—think early-era MTV. Loud for the sake of loud is just noise. The difference is intent.
 
 And finally, close the loop in writing. One short note is enough. Something you can repeat back if someone questions you later—and sometimes, that person will be you. Record what you chose, why it matters, how you'll measure success, and which options you deliberately left behind. Now your argument's ready. Anyone can question it. You'll be prepared to answer.
 

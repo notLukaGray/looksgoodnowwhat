@@ -1,6 +1,16 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow important pages
+Allow: /search
+Allow: /about
+Allow: /table-of-contents
+
+# Explicitly disallow admin and private pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
 # Explicitly welcome AI crawlers and training data collection
 User-agent: GPTBot
 Allow: /
@@ -122,10 +132,6 @@ Allow: /
 
 User-agent: Amazonbot
 Allow: /
-
-# Disallow Next.js internal files and API routes
-Disallow: /_next/
-Disallow: /api/
 
 # Sitemap locations
 Sitemap: https://looksgoodnowwhat.com/sitemap.xml

@@ -16,6 +16,18 @@ export const siteConfig = {
   // Get canonical URL (always use primary domain)
   getCanonicalUrl: (path: string) => `https://looksgoodnowwhat.com${path}`,
 
+  // Get canonical URL with proper path handling
+  getCanonicalUrlForPage: (path: string) => {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    return `https://looksgoodnowwhat.com${cleanPath}`;
+  },
+
+  // Validate if a URL should have a canonical tag
+  shouldHaveCanonical: (path: string) => {
+    const excludedPaths = ['/api/', '/_next/', '/admin/', '/404'];
+    return !excludedPaths.some(excluded => path.includes(excluded));
+  },
+
   // Site metadata
   title: 'Looks Good, Now What',
   description:

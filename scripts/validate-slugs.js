@@ -14,19 +14,19 @@ files.forEach(file => {
   const slug = file.replace(/\.md$/, '');
   if (!slugRegex.test(slug)) {
     console.warn(
-      `❌ Invalid slug: "${slug}" (from file: ${file})\n  - Slugs must be lowercase, use only a-z, 0-9, and hyphens.`
+      `[FAIL] Invalid slug: "${slug}" (from file: ${file})\n  - Slugs must be lowercase, use only a-z, 0-9, and hyphens.`
     );
     hasError = true;
   }
   if (seen.has(slug)) {
-    console.warn(`❌ Duplicate slug: "${slug}" (from file: ${file})`);
+    console.warn(`[FAIL] Duplicate slug: "${slug}" (from file: ${file})`);
     hasError = true;
   }
   seen.add(slug);
 });
 
 if (!hasError) {
-  console.log('✅ All slugs are valid and unique.');
+  console.log('[PASS] All slugs are valid and unique.');
   process.exit(0);
 } else {
   process.exit(1);

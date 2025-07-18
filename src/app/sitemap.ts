@@ -28,6 +28,12 @@ const generateSitemap = cache((): MetadataRoute.Sitemap => {
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/search`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    },
   ];
 
   // Chapter pages

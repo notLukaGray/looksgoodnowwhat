@@ -8,6 +8,7 @@ import {
   getAdminBreadcrumbs,
   generateStructuredStaticBreadcrumbs,
 } from '../../../lib/breadcrumbs';
+import Head from 'next/head';
 
 export default function Page() {
   const breadcrumbs = getAdminBreadcrumbs();
@@ -15,6 +16,11 @@ export default function Page() {
     generateStructuredStaticBreadcrumbs(breadcrumbs);
   return (
     <>
+      <Head>
+        <title>IndexNow Admin - Looks Good, Now What</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="googlebot" content="noindex, nofollow" />
+      </Head>
       {/* Structured Data */}
       <script
         type="application/ld+json"

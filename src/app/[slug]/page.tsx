@@ -147,6 +147,112 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   // Generate dynamic breadcrumbs
   const breadcrumbs = generateStructuredBreadcrumbs(chapter);
 
+  // Generate structured data with proper JSON format
+  const generateStructuredData = (): Record<string, unknown>[] => {
+    const baseUrl = 'https://looksgoodnowwhat.com';
+    const chapterUrl = `${baseUrl}/${slug}`;
+    const imageUrl = chapter.keyImage
+      ? chapter.keyImage.startsWith('http')
+        ? chapter.keyImage
+        : `${baseUrl}${chapter.keyImage}`
+      : `${baseUrl}/apple-touch-icon.png`;
+
+    const structuredData: Record<string, unknown>[] = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: chapter.chapter,
+        description:
+          chapterDescriptions[chapter.slug] ||
+          `Chapter ${chapter.order}: ${chapter.chapter}`,
+        author: {
+          '@type': 'Person',
+          name: 'Luka Gray',
+          url: 'https://notlukagray.com/',
+        },
+        publisher: {
+          '@type': 'Person',
+          name: 'Luka Gray',
+          url: 'https://notlukagray.com/',
+        },
+        datePublished: '2025-07-14T12:52:57Z',
+        dateModified: chapter.modifiedTime || '2025-07-14T12:52:57Z',
+        url: chapterUrl,
+        image: imageUrl,
+        articleSection: 'Design Education',
+        keywords: keywords.join(', '),
+        educationalLevel: 'advanced',
+        audience: {
+          '@type': 'Audience',
+          audienceType: 'students, young professionals',
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': chapterUrl,
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Chapter',
+        name: chapter.chapter,
+        description:
+          chapterDescriptions[chapter.slug] ||
+          `Chapter ${chapter.order}: ${chapter.chapter}`,
+        position: chapter.order,
+        isPartOf: {
+          '@type': 'Book',
+          name: 'Looks Good, Now What',
+          author: {
+            '@type': 'Person',
+            name: 'Luka Gray',
+            url: 'https://notlukagray.com/',
+          },
+        },
+        url: chapterUrl,
+      },
+    ];
+
+    // Add breadcrumbs as a separate object
+    structuredData.push(breadcrumbs);
+
+    // Add audio object if audio file exists
+    if (chapter.audioFile) {
+      structuredData.push({
+        '@context': 'https://schema.org',
+        '@type': 'AudioObject',
+        name: `${chapter.chapter} - Audio`,
+        description:
+          chapterDescriptions[chapter.slug] ||
+          `Audio version of Chapter ${chapter.order}: ${chapter.chapter}`,
+        contentUrl: `${baseUrl}${chapter.audioFile}`,
+        encodingFormat: 'audio/mpeg',
+        duration: chapter.audioText || 'Unknown',
+        author: {
+          '@type': 'Person',
+          name: 'Luka Gray',
+          url: 'https://notlukagray.com/',
+        },
+        publisher: {
+          '@type': 'Person',
+          name: 'Luka Gray',
+          url: 'https://notlukagray.com/',
+        },
+        datePublished: '2025-07-14T12:52:57Z',
+        isPartOf: {
+          '@type': 'Book',
+          name: 'Looks Good, Now What',
+          author: {
+            '@type': 'Person',
+            name: 'Luka Gray',
+            url: 'https://notlukagray.com/',
+          },
+        },
+      });
+    }
+
+    return structuredData;
+  };
+
   return (
     <div className="min-h-screen bg-[#dfdfdf]" style={{ paddingTop: '40px' }}>
       <div className="flex flex-col lg:flex-row w-full h-[calc(100vh-40px)] gap-0 m-0 px-0">
@@ -239,100 +345,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              '@context': 'https://schema.org',
-              '@type': 'Article',
-              headline: chapter.chapter,
-              description:
-                chapterDescriptions[chapter.slug] ||
-                `Chapter ${chapter.order}: ${chapter.chapter}`,
-              author: {
-                '@type': 'Person',
-                name: 'Luka Gray',
-                url: 'https://notlukagray.com/',
-              },
-              publisher: {
-                '@type': 'Person',
-                name: 'Luka Gray',
-                url: 'https://notlukagray.com/',
-              },
-              datePublished: '2025-07-14T12:52:57Z',
-              dateModified: chapter.modifiedTime || '2025-07-14T12:52:57Z',
-              url: `${siteConfig.primaryDomain}/${slug}`,
-              image: chapter.keyImage
-                ? chapter.keyImage.startsWith('http')
-                  ? chapter.keyImage
-                  : `${siteConfig.primaryDomain}${chapter.keyImage}`
-                : `${siteConfig.primaryDomain}/apple-touch-icon.png`,
-              articleSection: 'Design Education',
-              keywords: keywords.join(', '),
-              educationalLevel: 'advanced',
-              audience: {
-                '@type': 'Audience',
-                audienceType: 'students, young professionals',
-              },
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                '@id': `${siteConfig.primaryDomain}/${slug}`,
-              },
-            },
-            {
-              '@context': 'https://schema.org',
-              '@type': 'Chapter',
-              name: chapter.chapter,
-              description:
-                chapterDescriptions[chapter.slug] ||
-                `Chapter ${chapter.order}: ${chapter.chapter}`,
-              position: chapter.order,
-              isPartOf: {
-                '@type': 'Book',
-                name: 'Looks Good, Now What',
-                author: {
-                  '@type': 'Person',
-                  name: 'Luka Gray',
-                  url: 'https://notlukagray.com/',
-                },
-              },
-              url: `${siteConfig.primaryDomain}/${slug}`,
-            },
-            breadcrumbs,
-            ...(chapter.audioFile
-              ? [
-                  {
-                    '@context': 'https://schema.org',
-                    '@type': 'AudioObject',
-                    name: `${chapter.chapter} - Audio`,
-                    description:
-                      chapterDescriptions[chapter.slug] ||
-                      `Audio version of Chapter ${chapter.order}: ${chapter.chapter}`,
-                    contentUrl: `${siteConfig.primaryDomain}${chapter.audioFile}`,
-                    encodingFormat: 'audio/mpeg',
-                    duration: chapter.audioText || 'Unknown',
-                    author: {
-                      '@type': 'Person',
-                      name: 'Luka Gray',
-                      url: 'https://notlukagray.com/',
-                    },
-                    publisher: {
-                      '@type': 'Person',
-                      name: 'Luka Gray',
-                      url: 'https://notlukagray.com/',
-                    },
-                    datePublished: '2025-07-14T12:52:57Z',
-                    isPartOf: {
-                      '@type': 'Book',
-                      name: 'Looks Good, Now What',
-                      author: {
-                        '@type': 'Person',
-                        name: 'Luka Gray',
-                        url: 'https://notlukagray.com/',
-                      },
-                    },
-                  },
-                ]
-              : []),
-          ]),
+          __html: JSON.stringify(generateStructuredData()),
         }}
       />
     </div>

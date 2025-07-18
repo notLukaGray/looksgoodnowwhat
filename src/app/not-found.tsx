@@ -3,10 +3,14 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { getAllChapters } from '../lib/chapters';
+import { siteConfig } from '../lib/config';
 
 export const metadata: Metadata = {
   title: 'Page Not Found - Looks Good, Now What',
   description: 'The page you are looking for could not be found.',
+  alternates: {
+    canonical: `${siteConfig.primaryDomain}/404`,
+  },
   robots: {
     index: false,
     follow: false,

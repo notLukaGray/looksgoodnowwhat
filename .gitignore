@@ -45,3 +45,6 @@ temp_section_*.mp3
 mp3list.txt
 *.tmp.mp3
 temp_*.mp3
+
+# working files (development and planning files)
+/working-files/
