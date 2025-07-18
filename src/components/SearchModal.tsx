@@ -104,7 +104,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   // Handle result click
   const handleResultClick = (result: SearchResult) => {
-    router.push(`/${result.slug}`);
+    const url = result.anchorId
+      ? `/${result.slug}#${result.anchorId}`
+      : `/${result.slug}`;
+    router.push(url);
     onClose();
   };
 
@@ -261,12 +264,20 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     >
                       <div className="space-y-1">
                         <div className="flex items-start justify-between">
-                          <h3
-                            className="font-medium text-gray-900 dark:text-white text-sm leading-tight"
-                            dangerouslySetInnerHTML={{
-                              __html: highlightText(result.title, query),
-                            }}
-                          />
+                          <div className="flex-1 min-w-0">
+                            <h3
+                              className="font-medium text-gray-900 dark:text-white text-sm leading-tight"
+                              dangerouslySetInnerHTML={{
+                                __html: highlightText(result.title, query),
+                              }}
+                            />
+                            {result.heading &&
+                              result.heading !== result.title && (
+                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                  {result.heading}
+                                </p>
+                              )}
+                          </div>
                           <span className="text-xs text-orange-600 dark:text-orange-400 ml-2 shrink-0">
                             {result.chapter}
                           </span>

@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createSearchIndex, performSearch } from '../../../lib/search';
 
 interface CacheEntry {
-  data: { results: Array<{ slug: string; title: string; excerpt: string }> };
+  data: {
+    results: Array<{
+      slug: string;
+      title: string;
+      excerpt: string;
+      heading?: string;
+      anchorId?: string;
+    }>;
+  };
   timestamp: number;
 }
 
@@ -44,6 +52,8 @@ export async function GET(request: NextRequest) {
       slug: result.slug,
       title: result.title,
       excerpt: result.excerpt,
+      heading: result.heading,
+      anchorId: result.anchorId,
     }));
 
     const response = { results };
