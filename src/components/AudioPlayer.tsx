@@ -14,6 +14,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
   const [expanded, setExpanded] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [playbackRate, setPlaybackRate] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const eventListenersRef = useRef<{
     updateTime: () => void;
@@ -22,6 +23,9 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
     handleError: (e: Event) => void;
     handleLoadStart: () => void;
   } | null>(null);
+
+  // Speed options in order
+  const speedOptions = [0.75, 1, 1.5, 2];
 
   useEffect(() => {
     setHasMounted(true);
@@ -94,6 +98,7 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
       try {
         audioRef.current = new Audio(src);
         audioRef.current.preload = 'metadata';
+        audioRef.current.playbackRate = playbackRate;
 
         const updateTime = () => {
           if (audioRef.current) {
@@ -197,6 +202,17 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleSpeedChange = () => {
+    const currentIndex = speedOptions.indexOf(playbackRate);
+    const nextIndex = (currentIndex + 1) % speedOptions.length;
+    const newSpeed = speedOptions[nextIndex];
+    setPlaybackRate(newSpeed);
+
+    if (audioRef.current) {
+      audioRef.current.playbackRate = newSpeed;
+    }
   };
 
   if (!src) {
@@ -335,6 +351,36 @@ export default function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
             >
               {formatTime(duration)}
             </span>
+            <button
+              onClick={handleSpeedChange}
+              style={{
+                background: 'rgba(255,255,255,0.2)',
+                border: 'none',
+                borderRadius: '50%',
+                width: 32,
+                height: 32,
+                marginLeft: 8,
+                color: '#fff',
+                fontSize: 11,
+                fontFamily: 'var(--font-mono)',
+                cursor: 'pointer',
+                outline: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background-color 0.2s ease',
+                flexShrink: 0,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.2)';
+              }}
+              aria-label={`Playback speed: ${playbackRate}x`}
+            >
+              {playbackRate === 0.75 ? '.75x' : `${playbackRate}x`}
+            </button>
           </>
         )}
       </div>

@@ -37,7 +37,7 @@ What are we mapping?
 
 - **The peripheral players** – Who's challenging the status quo? These are the outliers pushing at the edges, redefining expectations, or approaching the problem from a different angle.
 
-- **The Empty Corners** – Where Are Needs Going Unmet? What assumptions are competitors making that you can challenge? Where does the audience feel underserved, misread, or ignored?
+- **The Empty Corners** – Where are needs going unmet? What assumptions are competitors making that you can challenge? Where does the audience feel underserved, misread, or ignored?
 
 <div style="height: 10px;"></div>
 
