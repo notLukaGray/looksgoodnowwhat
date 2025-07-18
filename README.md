@@ -317,6 +317,3 @@ All content is © Luka Gray. The codebase is available for educational purposes.
 - **Book**: [looksgoodnowwhat.com](https://looksgoodnowwhat.com)
 - **Focus**: Strategic design thinking and design education
 
-```
-
-```
